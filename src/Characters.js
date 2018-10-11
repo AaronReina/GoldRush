@@ -1,8 +1,8 @@
 var Character = function(context,life) {
   this.context= context
   this.life = life; // se genera al crear cada personaje y en un futuro pasaria al tipo de personaje y segun el tipo sera una u otra.
-  this.positionx = 0;// se genera al posicionarlo
-  this.positiony = 0;// se genera al posicionarlo
+  this.positionx = 300;// se genera al posicionarlo
+  this.positiony = 1000;// se genera al posicionarlo
 };
 
 
@@ -15,7 +15,7 @@ Character.prototype.draw = function() {
   var img = new Image();
   img.onload = function() {
     
-   that.context.drawImage(img, that.positionx, that.positiony, 20 ,20);
+   that.context.drawImage(img, that.positionx, that.positiony, 80 ,80);
   };
   img.src="./img/Tocho.png";
 }

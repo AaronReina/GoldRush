@@ -9,12 +9,10 @@
 
 
 
-
 // pinta todo
 
 
 window.onload = function() {
-    fullScreen();
     var gameArea= new MyGameArea();
     var player1 = new Character(gameArea.ctx,2)
    var proyectile1= new Proyectile(gameArea.ctx,1,player1.positionx,player1.positiony)
