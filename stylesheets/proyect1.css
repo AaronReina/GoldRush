@@ -1,0 +1,12 @@
+
+ body {
+  margin: 0;
+  overflow: hidden;
+}
+#BackCanvas{
+  display: block;
+  background-image: url("../img/landscape-clipart-wild-west-7.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
