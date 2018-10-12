@@ -7,29 +7,37 @@
 </head>
 
 <body>
-  <div id="BackCanvas">
-    <div class="inputLine">
-<input type="text" class="strengthPlayer1" placeholder="strengthPlayer1">
-<input type="text" class="anglePlayer1" placeholder="anglePlayer1">
-<input type="text" class="strengthPlayer2" placeholder="strengthPlayer2">
-<input type="text" class="anglePlayer2" placeholder="anglePlayer2">
+  <div class="player1">
+    <div>
+      <button type="button"  class="strenghtPlayer1"> Confirm Strength </button>
+      <input type="text" class="strenghtPlayer1" placeholder="strenghtPlayer1">
     </div>
-    <div class="confirmLine">
-        <button type="button" class="strengthPlayer1" >  Confirm Strength </button>
-        <button type="button" class="anglePlayer1" > Confirm Angle </button>
-        <button type="button" class="strengthPlayer2" > Confirm Strength </button>
-        <button type="button" class="anglePlayer2" > Confirm Angle </button>
-      </div>
-      <div class="AttackLine">
-          <button type="button" class="AttackPlayer1" >  Attack Player1 </button>
-          <button type="button" class="AttackPlayer2" > Attack Player2 </button>
-          
-        </div>
-    <canvas id="Canvas" width="800" height="600">
+    <div>
+      <button type="button" class="anglePlayer1"> Confirm Angle </button>
+      <input type="text" class="anglePlayer1" placeholder="anglePlayer1">
+    </div>
+    <button type="button" class="AttackPlayer1"> Attack Player1 </button>
+  </div>
+
+
+  <div id="BackCanvas">
+
+    <canvas id="Canvas" width="1000" height="800">
 
 
 
     </canvas>
+  </div>
+  <div class="player2">
+    <div>
+      <button type="button" class="strenghtPlayer2"> Confirm Strength </button>
+      <input type="text" class="strenghtPlayer2" placeholder="strenghtPlayer2">
+    </div>
+    <div>
+      <button type="button" class="anglePlayer2"> Confirm Angle </button>
+      <input type="text" class="anglePlayer2" placeholder="anglePlayer2">
+    </div>
+    <button type="button" class="AttackPlayer2"> Attack Player2 </button>
   </div>
 
   <script type="text/javascript" src="./src/GameArea.js"></script>

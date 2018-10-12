@@ -19,9 +19,8 @@ Character.prototype.draw = function() {
   };
   img.src="./img/Tocho.png";
 }
-
 Character.prototype.atack = function() {
-  //Da los datos de angulo y potencia al proyectil
+  //inicia el ataque
 };
 Character.prototype.die = function() {
     //al recibir la colision baja las vidas .... habia que plantearse un hitbox invisible para el personaje......
