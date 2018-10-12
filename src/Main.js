@@ -16,7 +16,7 @@ window.onload = function() {
     var gameArea= new MyGameArea();
     var player1 = new Character(gameArea.ctx,2)
    var proyectile1= new Proyectile(gameArea.ctx,1,player1.positionx,player1.positiony)
-   proyectile1.physics(1000, 45)
+   proyectile1.physics(1000, 1)
     var interavalo =  setInterval(function() {
         gameArea.clear();
 

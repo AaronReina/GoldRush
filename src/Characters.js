@@ -1,8 +1,8 @@
 var Character = function(context,life) {
   this.context= context
   this.life = life; // se genera al crear cada personaje y en un futuro pasaria al tipo de personaje y segun el tipo sera una u otra.
-  this.positionx = 300;// se genera al posicionarlo
-  this.positiony = 1000;// se genera al posicionarlo
+  this.positionx = 100;// se genera al posicionarlo
+  this.positiony = 100;// se genera al posicionarlo
 };
 
 
