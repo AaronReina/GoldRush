@@ -3,6 +3,8 @@ var Character = function(context,life) {
   this.life = life; // se genera al crear cada personaje y en un futuro pasaria al tipo de personaje y segun el tipo sera una u otra.
   this.positionx = 100;// se genera al posicionarlo
   this.positiony = 100;// se genera al posicionarlo
+  this.img = new Image();
+  this.img.src="./img/Tocho.png";
 };
 
 
@@ -11,13 +13,11 @@ Character.prototype.position = function() {
 };
 Character.prototype.draw = function() {
   //pinta al personaje
-  var that = this;
-  var img = new Image();
-  img.onload = function() {
+  
+  
     
-   that.context.drawImage(img, that.positionx, that.positiony, 80 ,80);
-  };
-  img.src="./img/Tocho.png";
+   this.context.drawImage(this.img, this.positionx, this.positiony, 80 ,80);
+  
 }
 Character.prototype.atack = function() {
   //inicia el ataque

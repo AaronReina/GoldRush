@@ -14,19 +14,13 @@
 
 window.onload = function() {
     var gameArea= new MyGameArea();
-    var player1 = new Character(gameArea.ctx,2)
-   var proyectile1= new Proyectile(gameArea.ctx,1,player1.positionx,player1.positiony,2)
-   var weather1 = new Weather();
-   var building1= new Building(gameArea.ctx)
-   proyectile1.settings()
-   proyectile1.physics()
-    var interavalo =  setInterval(function() {
-        gameArea.clear();
+    gameArea.start()
+    console.log(gameArea.building.randomBuilding)
 
-        player1.draw()
-        proyectile1.draw()
-        building1.draw()
-        proyectile1.updateMove(weather1.gravity,weather1.wind)
+    var interavalo =  setInterval(function() {
+       
+        gameArea.draw();
+    
       }, 100);
     }; 
   

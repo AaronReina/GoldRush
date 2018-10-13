@@ -1,38 +1,59 @@
 var Building = function(context) {
-  this.context=context;
-  this.life= 3;// 3 para que rompa en 3 golpes o en dos gordos
-  this.alto = 0;// se genera aleatoriamente y se guarda para colisiones
-  this.ancho = 0;// se genera aleatoriamente y se guarda para colisiones
-  this.positionx = 0;// se genera aleatoriamente y se guarda para colisiones
-  this.positiony = 0;// se genera aleatoriamentey se guarda para colisiones
+  this.randomBuilding = [];
+  this.context = context;
+  this.img= new Image();
+this.img.src = "./img/textureMountain.png";
 };
 
 Building.prototype.random = function() {
+  for (var i = 0; i < 1100; i = posx) {
+    var posx = 0;
+    if (this.randomBuilding.length > 0) {
+      var lastBuiding = this.randomBuilding.length - 1;
+      var lastWidth = this.randomBuilding[lastBuiding].width;
+      var lastPositionx = this.randomBuilding[lastBuiding].positionx;
+      posx = lastWidth + lastPositionx;
+    }
+    var mountain = {
+      life: 3,
+      width: Math.floor(Math.random() * 120 + 60),
+      height: Math.floor(Math.random() * 400 + 50),
+      positionx: posx
+    };
+    mountain.positiony = 800 - mountain.height;
+    this.randomBuilding.push(mountain);
+  }
   //crear array aleatorio de estos
 };
 
 Building.prototype.draw = function() {
   //pintar los edificios
+
+
+
+
+    for (var i = 0; i < this.randomBuilding.length; i++) {
+      var pat = this.context.createPattern(this.img, "repeat");
+      var x = this.randomBuilding[i].positionx;
+      var y = this.randomBuilding[i].positiony;
+      var alto = this.randomBuilding[i].height;
+      var ancho = this.randomBuilding[i].width;
+
+      this.context.rect(x, y, ancho, alto);
+      this.context.fillStyle = pat;
+      this.context.fill();
+    }
   
-  var that = this
-  var img = new Image();
-  img.onload = function() {
-  
-var pat=that.context.createPattern(img,"repeat");
-that.context.rect(400,400,60,600);
-that.context.fillStyle=pat;
-that.context.fill();
-};img.src="./img/textureMountain.png";
-Building.prototype.damage = function() {
- // si se colisiona resta vidas 
+
+  Building.prototype.damage = function() {
+    // si se colisiona resta vidas
+  };
+
+  Building.prototype.reduction = function() {
+    // si se queda sin vidas se reduce su alto
+  };
+
+  Building.prototype.agujero = function() {
+    // pinta un agujero en la colision con el proyectil o lineas de rotura
+  };
 };
-
-Building.prototype.reduction = function() {
-  // si se queda sin vidas se reduce su alto
- };
-
-Building.prototype.agujero = function() {
- // pinta un agujero en la colision con el proyectil o lineas de rotura
-};
-
-}

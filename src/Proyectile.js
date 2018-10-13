@@ -8,7 +8,8 @@ var Proyectile = function(context,damage,x,y,turn) {
   this.positiony = y;// parte del personaje y avanza en funcion de la fuerza y dependiendo de los grados
   this.accelerationy = 0;// aceleracion del proyectil, depende de la fuerza en la funcion ataque del personaje
   this.accelerationx = 0;// deceleracion del proyectil, tendra un valor fijo mas el viento  
-
+this.img = new Image();
+this.img.src="./img/bomb.png";
   // pueden ser los grados apicados un tanto por ciento de la aceleracion aplicada a x o a y ????? por ejemplo 45 grados 100 fuerza  10 aceleracion a x y 10 a y?????  90 20 y 0 x?????
 };
 
@@ -47,13 +48,10 @@ console.log(that.angle)
 
 Proyectile.prototype.draw = function() {
   //pinta el proyectil
-  var that = this;
-  var img = new Image();
-  img.onload = function() {
-    
-   that.context.drawImage(img, that.positionx+60, that.positiony, 20 ,20);
-  };
-  img.src="./img/bomb.png";
+  
+  
+   this.context.drawImage(this.img, this.positionx+60, this.positiony, 20 ,20);
+ 
 
 };
 Proyectile.prototype.physics = function() {
