@@ -14,14 +14,14 @@ Building.prototype.random = function() {
       var lastPositionx = this.randomBuilding[lastBuiding].positionx;
       posx = lastWidth + lastPositionx;
     }
-    var mountain = {
+    var building = {
       life: 3,
       width: Math.floor(Math.random() * 100 + 70),
       height: Math.floor(Math.random() * 400 + 50),
       positionx: posx
     };
-    mountain.positiony = 800 - mountain.height;
-    this.randomBuilding.push(mountain);
+    building.positiony = 800 - building.height;
+    this.randomBuilding.push(building);
   }
   //crear array aleatorio de estos
 };
