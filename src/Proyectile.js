@@ -50,7 +50,7 @@ Proyectile.prototype.draw = function() {
   //pinta el proyectil
   
   
-   this.context.drawImage(this.img, this.positionx+60, this.positiony, 20 ,20);
+   this.context.drawImage(this.img, this.positionx+30, this.positiony, 10 ,10);
  
 
 };

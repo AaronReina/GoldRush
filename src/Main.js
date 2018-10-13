@@ -15,7 +15,7 @@
 window.onload = function() {
     var gameArea= new MyGameArea();
     gameArea.start()
-    console.log(gameArea.building.randomBuilding)
+    
 
     var interavalo =  setInterval(function() {
        

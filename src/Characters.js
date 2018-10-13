@@ -1,5 +1,6 @@
-var Character = function(context,life) {
-  this.context= context
+var Character = function(MyGameArea,Mountains,life) {
+  this.mountains=Mountains.randomBuilding
+  this.context= MyGameArea.ctx
   this.life = life; // se genera al crear cada personaje y en un futuro pasaria al tipo de personaje y segun el tipo sera una u otra.
   this.positionx = 100;// se genera al posicionarlo
   this.positiony = 100;// se genera al posicionarlo
@@ -9,6 +10,15 @@ var Character = function(context,life) {
 
 
 Character.prototype.position = function() {
+  var that = this
+  var random1 = Math.floor(Math.random() * 4 + 1);
+  //var random2 = Math.floor(Math.random() * this.mountains.randomBuilding.length-1 + this.mountains.randomBuilding.length-4);
+  that.positionx= that.mountains[random1].positionx+20;
+  that.positiony= that.mountains[random1].positiony-40;
+  console.log(that.positionx);
+  console.log(that.positiony)
+
+
   //posiciona al personaje
 };
 Character.prototype.draw = function() {
@@ -16,7 +26,7 @@ Character.prototype.draw = function() {
   
   
     
-   this.context.drawImage(this.img, this.positionx, this.positiony, 80 ,80);
+   this.context.drawImage(this.img, this.positionx, this.positiony, 40 ,40);
   
 }
 Character.prototype.atack = function() {
