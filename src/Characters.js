@@ -11,7 +11,7 @@ var Character = function(MyGameArea,Mountains,life) {
 
 Character.prototype.position = function() {
   var that = this
-  var random1 = Math.floor(Math.random() * 4 + 1);
+  var random1 = Math.floor(Math.random() * 3 + 0);
   //var random2 = Math.floor(Math.random() * this.mountains.randomBuilding.length-1 + this.mountains.randomBuilding.length-4);
   that.positionx= that.mountains[random1].positionx+20;
   that.positiony= that.mountains[random1].positiony-40;

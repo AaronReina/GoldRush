@@ -16,7 +16,7 @@ Building.prototype.random = function() {
     }
     var mountain = {
       life: 3,
-      width: Math.floor(Math.random() * 120 + 60),
+      width: Math.floor(Math.random() * 100 + 70),
       height: Math.floor(Math.random() * 400 + 50),
       positionx: posx
     };
