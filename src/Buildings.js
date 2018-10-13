@@ -1,8 +1,8 @@
 var Building = function(context) {
   this.randomBuilding = [];
   this.context = context;
-  this.img= new Image();
-this.img.src = "./img/textureMountain.png";
+  this.img = new Image();
+  this.img.src = "./img/textureMountain.png";
 };
 
 Building.prototype.random = function() {
@@ -29,21 +29,17 @@ Building.prototype.random = function() {
 Building.prototype.draw = function() {
   //pintar los edificios
 
+  for (var i = 0; i < this.randomBuilding.length; i++) {
+    var pat = this.context.createPattern(this.img, "repeat");
+    var x = this.randomBuilding[i].positionx;
+    var y = this.randomBuilding[i].positiony;
+    var alto = this.randomBuilding[i].height;
+    var ancho = this.randomBuilding[i].width;
 
-
-
-    for (var i = 0; i < this.randomBuilding.length; i++) {
-      var pat = this.context.createPattern(this.img, "repeat");
-      var x = this.randomBuilding[i].positionx;
-      var y = this.randomBuilding[i].positiony;
-      var alto = this.randomBuilding[i].height;
-      var ancho = this.randomBuilding[i].width;
-
-      this.context.rect(x, y, ancho, alto);
-      this.context.fillStyle = pat;
-      this.context.fill();
-    }
-  
+    this.context.rect(x, y, ancho, alto);
+    this.context.fillStyle = pat;
+    this.context.fill();
+  }
 
   Building.prototype.damage = function() {
     // si se colisiona resta vidas

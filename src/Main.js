@@ -3,27 +3,20 @@
 //inicializa array edificios
 //inicializa edificios
 
-
-
-
-
-
-
 // pinta todo
 
-
 window.onload = function() {
-    var gameArea= new MyGameArea();
-    gameArea.start()
-    
+  var gameArea = new MyGameArea();
+  gameArea.start();
+  loop();
+  function loop() {
+    gameArea.draw();
+    gameArea.proyectile.collision();
 
-    var interavalo =  setInterval(function() {
-       
-        gameArea.draw();
-    
-      }, 100);
-    }; 
-  
+    requestAnimationFrame(loop);
+  }
+};
+
 //llama metodo ataque
 //llama metodos proyectil
 //comprueba colisiones
