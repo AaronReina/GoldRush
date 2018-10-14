@@ -52,12 +52,12 @@ MyGameArea.prototype.drawTurn1 = function() {
   this.proyectile1.draw();
   this.proyectile1.updateMove(this.weather.gravity, this.weather.wind);
   this.proyectile1.collisionBuild();
-  // gameArea.proyectile.collisionPlayer()
+  // tgis,.proyectile1.collisionPlayer()
 };
 MyGameArea.prototype.drawTurn2 = function() {
   this.proyectile2.draw();
   this.proyectile2.updateMove(this.weather.gravity, this.weather.wind);
   this.proyectile2.collisionBuild();
-  // gameArea.proyectile.collisionPlayer()
+  // this.proyectile1.collisionPlayer()
 };
 }

@@ -41,6 +41,8 @@ Character.prototype.atack = function() {
   //inicia el ataque
 };
 Character.prototype.die = function() {
+
+  alert("Game Over")
   //al recibir la colision baja las vidas .... habia que plantearse un hitbox invisible para el personaje......
 };
 

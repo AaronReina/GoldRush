@@ -37,12 +37,19 @@ window.onload = function() {
             area.drawTurn1();
 
             if (area.proyectile1.impactBuild  === true) {
-              cancelAnimationFrame(loop1);
+              window.cancelAnimationFrame(loop1);
               area.initialPro();
               player1Node.classList.add("buttonsOf");
               turn(2,gameArea)
+            }
+            else if (area.proyectile1.impactPlayer === true) {
+              window.cancelAnimationFrame(loop1);
+              area.player1.life--
+              if (area.player1.life<1){
+                area.player1.die()
+              }
             } else {
-              requestAnimationFrame(loop1);
+              window.requestAnimationFrame(loop1);
             }
           }
         };
@@ -62,12 +69,20 @@ window.onload = function() {
           function loop2() {
             area.drawTurn2();
             if (area.proyectile2.impactBuild === true) {
-              cancelAnimationFrame(loop2);
+              window.cancelAnimationFrame(loop2);
               area.initialPro()
               player2Node.classList.add("buttonsOf");
               turn(1,gameArea)
-            } else {
-              requestAnimationFrame(loop2);
+            }
+            else if (area.proyectile2.impactPlayer === true) {
+              window.cancelAnimationFrame(loop2);
+              area.player2.life--
+              if (area.player2.life<1){
+                area.player2.die()
+              }
+            }
+            else {
+              window.requestAnimationFrame(loop2);
             }
           }
         };

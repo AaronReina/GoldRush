@@ -72,7 +72,7 @@ Proyectile.prototype.collisionBuild = function() {
     var minyBuild = build[i].positiony;
 
     if (that.positionx < 0 || that.positionx > 1000 || that.positiony > 800) {
-      that.impact= true
+      that.impactBuild= true
     } else if (
       that.positionx > minxBuild &&
       that.positionx < maxxBuild &&
@@ -84,24 +84,24 @@ Proyectile.prototype.collisionBuild = function() {
   }
 };
 // Proyectile.prototype.collisionPlayer = function() {
-//   var that = this;
-//      var maxxPlayer = that.positionx + 40;
-//     var minxPlayer = that.positionx;
-//     var maxyPlayer = that.positiony + 40;
-//     var minyPlayer = that.positiony;
+  
+//     var maxxPlayer = this.Character.positionx + 40;
+//     var minxPlayer = this.Character.positionx;
+//     var maxyPlayer = this.Character.positiony + 40;
+//     var minyPlayer = this.Character.positiony;
 
 //     if (
-//       that.positionx > minxPlayer &&
-//       that.positionx < maxxPlayer &&
-//       that.positiony < maxyPlayer &&
-//       that.positiony > minyPlayer
+//       this.positionx > minxPlayer &&
+//       this.positionx < maxxPlayer &&
+//       this.positiony < maxyPlayer &&
+//       this.positiony > minyPlayer
 //     )
 //     {
 //       console.log("ola ke ase tu!!!!!");
 //       this.impactPlayer= true
 
 //     }
-//   }
+ //  }
 Proyectile.prototype.explosion = function() {
   //realiza una animacion en su colision.
 };
