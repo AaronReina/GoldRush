@@ -1,4 +1,6 @@
 var Proyectile = function(context, Buildings, Character, turn) {
+  this.impactBuild= false;
+  this.impactPlayer= false;
   this.buildings = Buildings;
   this.turn = turn;
   this.strenght = 1000;
@@ -13,23 +15,43 @@ var Proyectile = function(context, Buildings, Character, turn) {
   this.img.src = "./img/bomb.png";
 };
 
-
-
 Proyectile.prototype.draw = function() {
   //pinta el proyectil
-if (this.turn === 1){
-  this.context.drawImage(this.img, this.positionx + 30, this.positiony, 10, 10);}
-if (this.turn === 2){
-    this.context.drawImage(this.img, this.positionx - 30, this.positiony, 10, 10);}
-
+  if (this.turn === 1) {
+    this.context.drawImage(
+      this.img,
+      this.positionx + 30,
+      this.positiony,
+      10,
+      10
+    );
+  }
+  if (this.turn === 2) {
+    this.context.drawImage(
+      this.img,
+      this.positionx - 30,
+      this.positiony,
+      10,
+      10
+    );
+  }
 };
 Proyectile.prototype.physics = function() {
-  //realiza los calculos y actualiza los valores
+
+ 
   var fuerzareal = this.strenght / 50;
   var porcentajey = this.angle * 1.111111111111111;
   var porcentajex = 100 - porcentajey;
   this.accelerationy = (fuerzareal * porcentajey) / 100;
   this.accelerationx = (fuerzareal * porcentajex) / 100;
+ 
+if (this.turn===2){
+  this.accelerationx = ((fuerzareal * porcentajex) / 100)*-1;
+
+}
+
+
+
 };
 Proyectile.prototype.updateMove = function(gravity, wind) {
   this.wind = wind / 1000;
@@ -48,44 +70,36 @@ Proyectile.prototype.collisionBuild = function() {
     var minxBuild = build[i].positionx;
     var maxyBuild = build[i].positiony + build[i].height;
     var minyBuild = build[i].positiony;
-    
-    if (
-      that.positionx > 1000 ||
-      that.positiony > 800 
-    ) {
-      console.log("fuera");
-      return true
-    }
-    else if (
+
+    if (that.positionx < 0 || that.positionx > 1000 || that.positiony > 800) {
+      that.impact= true
+    } else if (
       that.positionx > minxBuild &&
       that.positionx < maxxBuild &&
       that.positiony < maxyBuild &&
       that.positiony > minyBuild
     ) {
-      console.log("ola ke ase");
-      return true
-      
+      that.impactBuild= true;
     }
-
   }
 };
 // Proyectile.prototype.collisionPlayer = function() {
 //   var that = this;
-//   var player = that.Character;
 //      var maxxPlayer = that.positionx + 40;
 //     var minxPlayer = that.positionx;
 //     var maxyPlayer = that.positiony + 40;
 //     var minyPlayer = that.positiony;
-
 
 //     if (
 //       that.positionx > minxPlayer &&
 //       that.positionx < maxxPlayer &&
 //       that.positiony < maxyPlayer &&
 //       that.positiony > minyPlayer
-//     ) 
+//     )
 //     {
 //       console.log("ola ke ase tu!!!!!");
+//       this.impactPlayer= true
+
 //     }
 //   }
 Proyectile.prototype.explosion = function() {

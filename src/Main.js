@@ -22,21 +22,21 @@ window.onload = function() {
   var turn = function(option, area) {
     switch (option) {
       case 1:
+      area.proyectile1.physics();
       player1Node.classList.remove("buttonsOf");
         buttons[0].onclick = function() {
           area.proyectile1.strenght = parseInt(inputs[0].value);
-          console.log(area.proyectile1.strenght);
         };
         buttons[1].onclick = function() {
-          area.proyectile1.angle = parseInt(inputs[1].value);
-          console.log(gameArea.proyectile1.angle);
+          area.proyectile1.angle = parseInt(inputs[1].value)
         };
         buttons[2].onclick = function() {
+          area.proyectile1.physics();
           loop1();
           function loop1() {
             area.drawTurn1();
 
-            if (area.proyectile1.collisionBuild() === true) {
+            if (area.proyectile1.impactBuild  === true) {
               cancelAnimationFrame(loop1);
               area.initialPro();
               player1Node.classList.add("buttonsOf");
@@ -48,20 +48,20 @@ window.onload = function() {
         };
         break;
       case 2:
+   
       player2Node.classList.remove("buttonsOf");
         buttons[3].onclick = function() {
           area.proyectile2.strenght = parseInt(inputs[2].value);
-          console.log(area.proyectile2.strenght);
         };
         buttons[4].onclick = function() {
-          area.proyectile2.angle = parseInt(inputs[3].value);
-          console.log(area.proyectile2.angle);
+          area.proyectile2.angle = parseInt(inputs[3].value)
         };
         buttons[5].onclick = function() {
+          area.proyectile2.physics();
           loop2();
           function loop2() {
             area.drawTurn2();
-            if (area.proyectile2.collisionBuild() === true) {
+            if (area.proyectile2.impactBuild === true) {
               cancelAnimationFrame(loop2);
               area.initialPro()
               player2Node.classList.add("buttonsOf");

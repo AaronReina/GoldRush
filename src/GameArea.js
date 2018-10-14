@@ -19,19 +19,23 @@ this.turn= turn
     this.building.random();
     this.player1.position();
     this.player2.position();
-this.initialPro()
-    this.proyectile1.physics();
+    this.initialPro()
+    
     
   };
   MyGameArea.prototype.initialPro = function() {
-    console.log(this.player1.positionx)
-    console.log(this.player2.positionx)
-    console.log(this.player1.positiony)
-    console.log(this.player2.positiony)
     this.proyectile1.positionx=this.player1.positionx;
     this.proyectile1.positiony=this.player1.positiony;
     this.proyectile2.positionx=this.player2.positionx;
     this.proyectile2.positiony=this.player2.positiony;
+    this.proyectile1.impactBuild=false
+    this.proyectile2.impactBuild=false;
+    this.proyectile1.accelerationy = 0; 
+    this.proyectile1.accelerationx = 0;
+    this.proyectile2.accelerationy = 0; 
+    this.proyectile2.accelerationx = 0;
+    
+
     
   };
   MyGameArea.prototype.drawArea = function() {

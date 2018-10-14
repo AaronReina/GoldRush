@@ -24,13 +24,8 @@ Character.prototype.position = function() {
   that.positiony = that.building[random1].positiony - 40;
 }
 else if (that.player ===2){
-  console.log(that.positionx);
-  console.log(that.positiony);
-
 that.positionx = that.building[random2].positionx + 20;
 that.positiony = that.building[random2].positiony - 40;
-console.log(that.positionx);
-console.log(that.positiony);
 }
 
 
