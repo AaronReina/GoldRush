@@ -1,34 +1,59 @@
-var MyGameArea = function() {
+var MyGameArea = function(turn) {
   (this.canvas = document.querySelector("#Canvas")),
     (this.ctx = this.canvas.getContext("2d"));
-
+    this.tocho = "./img/Tocho";
+    this.lady = "./img/Lady"
   //pasar objetos al final n lugar de parametros sueltos
-
+this.turn= turn
   this.weather = new Weather();
   this.building = new Building(this.ctx);
-  this.player = new Character(this, this.building, 2);
-  this.proyectile = new Proyectile(
-    this.ctx,
-    this.building,
-    1,
-    this.player.positionx,
-    this.player.positiony,
-    2
-  );
+  this.player1 = new Character(this, this.building, 2,2,1,this.tocho);
+  this.player2 = new Character(this, this.building, 2,2,2,this.lady);
+  
+  this.proyectile1 = new Proyectile(this.ctx, this.building, this.player1, 1);
+  this.proyectile2 = new Proyectile(this.ctx, this.building, this.player2, 2);
   MyGameArea.prototype.clear = function() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   };
   MyGameArea.prototype.start = function() {
     this.building.random();
-    this.proyectile.settings();
-    this.proyectile.physics();
-    this.player.position();
+    this.player1.position();
+    this.player2.position();
+this.initialPro()
+    this.proyectile1.physics();
+    
   };
-  MyGameArea.prototype.draw = function() {
+  MyGameArea.prototype.initialPro = function() {
+    console.log(this.player1.positionx)
+    console.log(this.player2.positionx)
+    console.log(this.player1.positiony)
+    console.log(this.player2.positiony)
+    this.proyectile1.positionx=this.player1.positionx;
+    this.proyectile1.positiony=this.player1.positiony;
+    this.proyectile2.positionx=this.player2.positionx;
+    this.proyectile2.positiony=this.player2.positiony;
+    
+  };
+  MyGameArea.prototype.drawArea = function() {
     this.clear();
-    this.player.draw();
-    this.proyectile.draw();
     this.building.draw();
-    this.proyectile.updateMove(this.weather.gravity, this.weather.wind);
-  };
+    this.player1.draw();
+    this.player2.draw();
+    
+  
+
+
 };
+MyGameArea.prototype.drawTurn1 = function() {
+  this.proyectile1.draw();
+  this.proyectile1.updateMove(this.weather.gravity, this.weather.wind);
+  this.proyectile1.collisionBuild();
+  // gameArea.proyectile.collisionPlayer()
+};
+MyGameArea.prototype.drawTurn2 = function() {
+  this.proyectile2.draw();
+  this.proyectile2.updateMove(this.weather.gravity, this.weather.wind);
+  this.proyectile2.collisionBuild();
+  // gameArea.proyectile.collisionPlayer()
+};
+}

@@ -1,5 +1,5 @@
 var Weather = function() {
-  this.wind = 20; // se genera aleatoriamente y va de positivo a negativo, se le resta a la x del proyectil o se le suma por cada iteracion
+  this.wind = 0; // se genera aleatoriamente y va de positivo a negativo, se le resta a la x del proyectil o se le suma por cada iteracion
   this.gravity = 20; // tendra un valor fijo de aceleracion negativa para la x que habra que calcular
 };
 
