@@ -11,6 +11,6 @@ Weather.prototype.drawClouds = function() {
   //pintara nubes para indicar la direccion y potencia del viento
 };
 Weather.prototype.updateClouds = function() {
-  //actualizara la posicion de las nubes
+  //actualizara la posicion de las nubes 
 };
 
