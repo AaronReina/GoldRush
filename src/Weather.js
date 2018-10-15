@@ -1,10 +1,16 @@
 var Weather = function() {
-  this.wind = 0; // se genera aleatoriamente y va de positivo a negativo, se le resta a la x del proyectil o se le suma por cada iteracion
-  this.gravity = 20; // tendra un valor fijo de aceleracion negativa para la x que habra que calcular
+  //se declaran valores iniciales para gravedad y viento
+  this.wind = 0; 
+  this.gravity = 20; 
 };
 
 Weather.prototype.wind = function() {
-  //genera aleatoriamente el viento ... no debe estar dentro de la iteracion!!!!!!! añadir algun indicador con evitando canvas si es posible.
+  //genera aleatoriamente el viento en incio
+};
+Weather.prototype.drawClouds = function() {
+  //pintara nubes para indicar la direccion y potencia del viento
+};
+Weather.prototype.updateClouds = function() {
+  //actualizara la posicion de las nubes
 };
 
-//personaje añadiriamos tipos en un futuro con metodos para sus habilidades y diferentes daños
