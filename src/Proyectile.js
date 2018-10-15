@@ -1,26 +1,27 @@
-var Proyectile = function(context, Buildings, Character, turn) {
+var Proyectile = function(MyGameArea, Buildings, Character, turn) {
   this.impactBuild= false;
-  this.impactPlayer= false;
+  this.impactPlayer1= false;
+  this.impactPlayer2= false;
   this.buildings = Buildings;
   this.turn = turn;
   this.strenght = 1000;
   this.angle = 45;
-  this.context = context;
-  this.damage = Character.damage; // se genera al crear cada personaje y en un futuro pasaria al tipo de personaje y segun el tipo sera una u otra.
-  this.positionx = Character.positionx; // parte del personaje y avanza en funcion de la fuerza y dependiendo de los grados
-  this.positiony = Character.positiony; // parte del personaje y avanza en funcion de la fuerza y dependiendo de los grados
-  this.accelerationy = 0; // aceleracion del proyectil, depende de la fuerza en la funcion ataque del personaje
-  this.accelerationx = 0; // deceleracion del proyectil, tendra un valor fijo mas el viento
+  this.myGameArea = MyGameArea;
+  this.context = MyGameArea.ctx;
+  this.damage = Character.damage; 
+  this.positionx = Character.positionx; 
+  this.positiony = Character.positiony; 
+  this.accelerationy = 0; 
+  this.accelerationx = 0; 
   this.img = new Image();
   this.img.src = "./img/bomb.png";
 };
 
 Proyectile.prototype.draw = function() {
-  //pinta el proyectil
   if (this.turn === 1) {
     this.context.drawImage(
       this.img,
-      this.positionx + 30,
+      this.positionx + 41,
       this.positiony,
       10,
       10
@@ -29,7 +30,7 @@ Proyectile.prototype.draw = function() {
   if (this.turn === 2) {
     this.context.drawImage(
       this.img,
-      this.positionx - 30,
+      this.positionx - 41,
       this.positiony,
       10,
       10
@@ -83,25 +84,40 @@ Proyectile.prototype.collisionBuild = function() {
     }
   }
 };
-// Proyectile.prototype.collisionPlayer = function() {
-  
-//     var maxxPlayer = this.Character.positionx + 40;
-//     var minxPlayer = this.Character.positionx;
-//     var maxyPlayer = this.Character.positiony + 40;
-//     var minyPlayer = this.Character.positiony;
+Proyectile.prototype.collisionPlayer = function( ) {
+  var play =this.myGameArea.playersArray
 
-//     if (
-//       this.positionx > minxPlayer &&
-//       this.positionx < maxxPlayer &&
-//       this.positiony < maxyPlayer &&
-//       this.positiony > minyPlayer
-//     )
-//     {
-//       console.log("ola ke ase tu!!!!!");
-//       this.impactPlayer= true
 
-//     }
- //  }
+    var maxxPlayer1 = play[0].positionx + 40;
+    var minxPlayer1 = play[0].positionx;
+    var maxyPlayer1 = play[0].positiony + 40;
+    var minyPlayer1 = play[0].positiony;
+    var maxxPlayer2= play[1].positionx + 40;
+    var minxPlayer2 = play[1].positionx;
+    var maxyPlayer2 = play[1].positiony + 40;
+    var minyPlayer2 = play[1].positiony;
+
+    if (
+      this.positionx > minxPlayer1 &&
+      this.positionx < maxxPlayer1 &&
+      this.positiony < maxyPlayer1 &&
+      this.positiony > minyPlayer1
+    )
+    {
+      console.log("ola ke ase tu1!!!!!");
+      this.impactPlayer1= true
+    }
+    else if (
+      this.positionx > minxPlayer2 &&
+      this.positionx < maxxPlayer2 &&
+      this.positiony < maxyPlayer2 &&
+      this.positiony > minyPlayer2
+    )
+    {
+      console.log("ola ke ase tu2!!!!!");
+      this.impactPlayer2= true
+    }
+  }
 Proyectile.prototype.explosion = function() {
   //realiza una animacion en su colision.
 };

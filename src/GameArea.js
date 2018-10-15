@@ -7,11 +7,11 @@ var MyGameArea = function(turn) {
 this.turn= turn
   this.weather = new Weather();
   this.building = new Building(this.ctx);
-  this.player1 = new Character(this, this.building, 2,2,1,this.tocho);
-  this.player2 = new Character(this, this.building, 2,2,2,this.lady);
-  
-  this.proyectile1 = new Proyectile(this.ctx, this.building, this.player1, 1);
-  this.proyectile2 = new Proyectile(this.ctx, this.building, this.player2, 2);
+  this.player1 = new Character(this, this.building, 1,2,1,this.tocho);
+  this.player2 = new Character(this, this.building, 1,2,2,this.lady);
+  this.playersArray= [this.player1,this.player2]
+  this.proyectile1 = new Proyectile(this, this.building, this.player1, 1);
+  this.proyectile2 = new Proyectile(this, this.building, this.player2, 2);
   MyGameArea.prototype.clear = function() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   };
@@ -52,12 +52,12 @@ MyGameArea.prototype.drawTurn1 = function() {
   this.proyectile1.draw();
   this.proyectile1.updateMove(this.weather.gravity, this.weather.wind);
   this.proyectile1.collisionBuild();
-  // tgis,.proyectile1.collisionPlayer()
+  this.proyectile1.collisionPlayer()
 };
 MyGameArea.prototype.drawTurn2 = function() {
   this.proyectile2.draw();
   this.proyectile2.updateMove(this.weather.gravity, this.weather.wind);
   this.proyectile2.collisionBuild();
-  // this.proyectile1.collisionPlayer()
+  this.proyectile2.collisionPlayer()
 };
 }

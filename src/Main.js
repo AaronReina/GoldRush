@@ -35,20 +35,32 @@ window.onload = function() {
           loop1();
           function loop1() {
             area.drawTurn1();
-
             if (area.proyectile1.impactBuild  === true) {
               window.cancelAnimationFrame(loop1);
               area.initialPro();
               player1Node.classList.add("buttonsOf");
               turn(2,gameArea)
             }
-            else if (area.proyectile1.impactPlayer === true) {
+            else if (area.proyectile1.impactPlayer1 === true) {
               window.cancelAnimationFrame(loop1);
               area.player1.life--
               if (area.player1.life<1){
                 area.player1.die()
+                
               }
-            } else {
+             
+            } 
+            else if (area.proyectile1.impactPlayer2 === true) {
+              window.cancelAnimationFrame(loop1);
+              area.player2.life--
+              if (area.player2.life<1){
+                area.player2.die()
+                
+              }
+             
+            }
+            
+            else {
               window.requestAnimationFrame(loop1);
             }
           }
@@ -74,11 +86,18 @@ window.onload = function() {
               player2Node.classList.add("buttonsOf");
               turn(1,gameArea)
             }
-            else if (area.proyectile2.impactPlayer === true) {
+            else if (area.proyectile2.impactPlayer2 === true) {
               window.cancelAnimationFrame(loop2);
               area.player2.life--
               if (area.player2.life<1){
                 area.player2.die()
+              }
+            }
+            else if (area.proyectile2.impactPlayer1 === true) {
+              window.cancelAnimationFrame(loop2);
+              area.player1.life--
+              if (area.player1.life<1){
+                area.player1.die()
               }
             }
             else {
