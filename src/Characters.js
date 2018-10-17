@@ -16,8 +16,10 @@ Character.prototype.position = function() {
   var random1 = Math.floor(Math.random() * 3 + 0);
   var random2 =
     Math.floor(
-      Math.random() * (that.building.length - that.building.length - 3)) +
-    that.building.length - 3;
+      Math.random() * (that.building.length - that.building.length - 3)
+    ) +
+    that.building.length -
+    3;
 
   if (that.player === 1) {
     that.positionx = that.building[random1].positionx + 20;
@@ -28,7 +30,7 @@ Character.prototype.position = function() {
   }
 };
 Character.prototype.draw = function() {
-//Dibuja al personaje y le da un tamaño fijo, que luego tendremos en cuenta para calular sus colisiones.
+  //Dibuja al personaje y le da un tamaño fijo, que luego tendremos en cuenta para calular sus colisiones.
   this.context.drawImage(this.img, this.positionx, this.positiony, 40, 40);
 };
 
@@ -36,4 +38,3 @@ Character.prototype.die = function() {
   //indica con una alerta que jugador gana (en el futuro realizara otras acciones)
   alert("Player " + this.player + " loose");
 };
-
