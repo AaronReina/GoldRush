@@ -1,6 +1,6 @@
 var Weather = function() {
   //se declaran valores iniciales para gravedad y viento
-  this.wind = 0;
+  this.wind = 20;
   this.gravity = 20;
 };
 

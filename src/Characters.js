@@ -1,6 +1,7 @@
 var Character = function(MyGameArea, Building, life, damage, player, image) {
   //Asigna los diferentes valores a las variables internas relativas al personaje y los objetos que interactuan con el.
   this.player = player;
+  this.currentBuilding ;
   this.building = Building.randomBuilding;
   this.context = MyGameArea.ctx;
   this.damage = damage;
@@ -24,14 +25,17 @@ Character.prototype.position = function() {
   if (that.player === 1) {
     that.positionx = that.building[random1].positionx + 20;
     that.positiony = that.building[random1].positiony - 40;
+    that.currentBuilding=that.building[random1]
   } else if (that.player === 2) {
     that.positionx = that.building[random2].positionx + 20;
     that.positiony = that.building[random2].positiony - 40;
+    that.currentBuilding=that.building[random2]
   }
 };
 Character.prototype.draw = function() {
   //Dibuja al personaje y le da un tamaño fijo, que luego tendremos en cuenta para calular sus colisiones.
-  this.context.drawImage(this.img, this.positionx, this.positiony, 40, 40);
+  this.context.drawImage(this.img, this.positionx, this.currentBuilding.positiony-40, 40, 40);
+   
 };
 
 Character.prototype.die = function() {

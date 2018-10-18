@@ -68,11 +68,15 @@ Building.prototype.draw = function() {
 
 Building.prototype.damage = function(building, i) {
   building[i].life--;
+  if (building[i].life===0){
+   this.reduction(building,i)
+  }
+
   // restara vida al edificio al colisionar
 };
 
 Building.prototype.reduction = function(building, i) {
-  building[i].height = 50;
   building[i].positiony = 750;
-  // restara altura al edificio cuando pierda vida y las repondra
+  building[i].life = -1;
+
 };
