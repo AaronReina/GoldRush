@@ -49,7 +49,6 @@ var MyGameArea = function() {
     this.proyectile1.updateMove(this.weather.gravity, this.weather.wind);
     this.proyectile1.collisionBuild();
     this.proyectile1.collisionPlayer();
-    console.log("pintando1");
   };
   //Dibuja el proyectil 2, actualiza su posicion y comprueba sus colisiones
   MyGameArea.prototype.drawTurn2 = function() {
@@ -57,6 +56,5 @@ var MyGameArea = function() {
     this.proyectile2.updateMove(this.weather.gravity, this.weather.wind);
     this.proyectile2.collisionBuild();
     this.proyectile2.collisionPlayer();
-    console.log("pintando2");
   };
 };

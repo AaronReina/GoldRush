@@ -2,21 +2,27 @@ var Building = function(context) {
   //declara las variables que necesitara esta clase
   this.randomBuilding = [];
   this.context = context;
-  this.img = new Image();
-  this.img.src = "./img/textureMountain.png";
+  this.img1 = new Image();
+  this.img1.src = "./img/mountain1.jpg";
+  this.img2 = new Image();
+  this.img2.src = "./img/mountain2.jpeg";
+  this.img3 = new Image();
+  this.img3.src = "./img/mountain3.png";
 };
 //Esta funcion genera edificios con ancho y alto aleatorios y los mete en un array previamente declarado
 Building.prototype.random = function() {
+  var building;
+  var posx = 0;
   for (var i = 0; i < 1100; i = posx) {
     //el primer valor se inicia en x = 0 y a partir de ahi se va actualizando con cada edificio de forma que unos no se pisan con otros.
-    var posx = 0;
+
     if (this.randomBuilding.length > 0) {
       var lastBuiding = this.randomBuilding.length - 1;
       var lastWidth = this.randomBuilding[lastBuiding].width;
       var lastPositionx = this.randomBuilding[lastBuiding].positionx;
       posx = lastWidth + lastPositionx;
     }
-    var building = {
+    building = {
       life: 3,
       width: Math.floor(Math.random() * 100 + 70),
       height: Math.floor(Math.random() * 400 + 50),
@@ -28,27 +34,45 @@ Building.prototype.random = function() {
 };
 
 Building.prototype.draw = function() {
+  var img;
+  this.context.beginPath();
+
   //crea un bucle que recorre el array de edificios y los pinta a partir de una textura
   for (var i = 0; i < this.randomBuilding.length; i++) {
-    var pat = this.context.createPattern(this.img, "repeat");
     var x = this.randomBuilding[i].positionx;
     var y = this.randomBuilding[i].positiony;
     var alto = this.randomBuilding[i].height;
     var ancho = this.randomBuilding[i].width;
-    this.context.rect(x, y, ancho, alto);
+    img = this.img3;
+    var pat = this.context.createPattern(img, "repeat");
+
     this.context.fillStyle = pat;
-    this.context.fill();
+
+    // Create buildings path
+    if (i == 0) {
+      this.context.moveTo(x, y);
+    }
+
+    this.context.lineTo(x, y);
+    this.context.lineTo(x + ancho, y);
+
+    if (i == this.randomBuilding.length - 1) {
+      this.context.lineTo(x, 800);
+      this.context.lineTo(0, 800);
+      this.context.lineTo(0, this.randomBuilding[0].positiony);
+    }
   }
 
-  Building.prototype.damage = function() {
-    // restara vida al edificio al colisionar
-  };
+  this.context.fill();
+};
 
-  Building.prototype.reduction = function() {
-    // restara altura al edificio cuando pierda vida y las repondra
-  };
+Building.prototype.damage = function(building, i) {
+  building[i].life--;
+  // restara vida al edificio al colisionar
+};
 
-  Building.prototype.agujero = function() {
-    // pinta un agujero en la colision con el proyectil o lineas de rotura
-  };
+Building.prototype.reduction = function(building, i) {
+  building[i].height = 50;
+  building[i].positiony = 750;
+  // restara altura al edificio cuando pierda vida y las repondra
 };

@@ -12,7 +12,7 @@ var Turn = function(MygameArea) {
   Turn.prototype.turnos = function(option) {
     switch (option) {
       case 1:
-        console.log("turno1");
+       
         var that = this;
         that.draw1 = false;
         that.draw2 = false;
@@ -21,25 +21,25 @@ var Turn = function(MygameArea) {
         that.player1Node.classList.remove("buttonsOf");
         that.buttons[0].onclick = function() {
           that.area.proyectile1.strenght = parseInt(that.inputs[0].value);
-          console.log(that.area.proyectile1.strenght);
+          
         };
         that.buttons[1].onclick = function() {
           that.area.proyectile1.angle = parseInt(that.inputs[1].value);
-          console.log(that.area.proyectile1.angle);
+          
         };
         that.buttons[2].onclick = function() {
           //se vuelven a actualizar las fisicas con los nuevos valores
           that.area.proyectile1.physics();
           that.draw1 = true;
 
-          console.log("ataque1");
+       
           //inicia un loop
           //pinta el area y comprueba los impactos
         };
         break;
 
       case 2:
-        console.log("turno2");
+        
         //realiza el mismo proceso que en el caso uno pero con las referencias del caso 2
         var that = this;
         that.draw1 = false;
@@ -47,16 +47,16 @@ var Turn = function(MygameArea) {
         that.player2Node.classList.remove("buttonsOf");
         that.buttons[3].onclick = function() {
           that.area.proyectile2.strenght = parseInt(that.inputs[2].value);
-          console.log(that.area.proyectile2.strenght);
+          
         };
         that.buttons[4].onclick = function() {
           that.area.proyectile2.angle = parseInt(that.inputs[3].value);
-          console.log(that.area.proyectile2.angle);
+          
         };
         that.buttons[5].onclick = function() {
           that.area.proyectile2.physics();
           that.draw2 = true;
-          console.log("ataque1");
+          
         };
         break;
     }

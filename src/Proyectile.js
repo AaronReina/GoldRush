@@ -21,14 +21,9 @@ var Proyectile = function(MyGameArea, Buildings, Character, turn) {
 Proyectile.prototype.draw = function() {
   if (this.turn === 1) {
     this.context.drawImage(this.img, this.positionx, this.positiony, 10, 10);
-    console.log("posicion x  " + this.positionx);
-    console.log("posicion y  " + this.positiony);
   }
   if (this.turn === 2) {
     this.context.drawImage(this.img, this.positionx, this.positiony, 10, 10);
-    console.log(this.positionx);
-    console.log(this.positiony);
-    console.log("pintado dos fuciona");
   }
 };
 //esta funcion actualiza las fisicas del proyectil y cambia el valor de x a negativo para el turno del player 2
@@ -42,9 +37,7 @@ Proyectile.prototype.physics = function() {
   var accelerationx0 = (fuerzareal * porcentajex) / 100;
   this.accelerationy = accelerationy0.toFixed(2);
   this.accelerationx = accelerationx0.toFixed(2);
-  console.log(this.angle);
-  console.log(this.accelerationy);
-  console.log(this.accelerationx);
+
   if (this.turn === 2) {
     this.accelerationx = this.accelerationx * -1;
   }
@@ -78,8 +71,8 @@ Proyectile.prototype.collisionBuild = function() {
       that.positiony < maxyBuild &&
       that.positiony > minyBuild
     ) {
+      that.buildings.damage(build, i);
       that.impactBuild = true;
-      console.log("impacto");
     }
   }
 };
@@ -95,7 +88,7 @@ Proyectile.prototype.collisionPlayer = function() {
   var minxPlayer2 = play[1].positionx;
   var maxyPlayer2 = play[1].positiony + 40;
   var minyPlayer2 = play[1].positiony;
-  console.log("min" + minyPlayer2);
+
   if (
     this.positionx > minxPlayer1 &&
     this.positionx < maxxPlayer1 &&
