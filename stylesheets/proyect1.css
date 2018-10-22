@@ -1,3 +1,33 @@
+
+@font-face {
+  font-family: 'Western Normal';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Western Normal'), url('WEST____.woff') format('woff');
+  }
+
+
+  input{
+    font-family:'Western Normal';
+    font-size: 16px;
+    padding: 8px ;
+    outline-color: brown
+  }
+button{
+  font-family:'Western Normal';
+  background-color: rgb(216, 113, 76);
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border: 2px solid black;
+  margin-top: 5px;
+  border-radius: 5px;
+  outline-color: brown
+
+
+}
+
 html {
   height: 100%;
 }
@@ -5,10 +35,15 @@ body {
   margin: 0;
   overflow: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
+  background-image: url("../img/Wanted-background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%, 100%;
 }
+
+
 #BackCanvas {
   display: block;
   background-image: url("../img/landscape-clipart-wild-west-7.jpg");
