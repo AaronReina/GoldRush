@@ -1,7 +1,8 @@
-var Building = function(context) {
+var Building = function(gameArea) {
   //declara las variables que necesitara esta clase
   this.randomBuilding = [];
-  this.context = context;
+  this.gameArea = gameArea
+  this.context = gameArea.ctx;
   this.img1 = new Image();
   this.img1.src = "./img/mountain1.jpg";
   this.img2 = new Image();
@@ -23,7 +24,7 @@ Building.prototype.random = function() {
       posx = lastWidth + lastPositionx;
     }
     building = {
-      life: 3,
+      life: 2,
       width: Math.floor(Math.random() * 100 + 70),
       height: Math.floor(Math.random() * 400 + 50),
       positionx: posx
@@ -78,5 +79,7 @@ Building.prototype.damage = function(building, i) {
 Building.prototype.reduction = function(building, i) {
   building[i].positiony = 750;
   building[i].life = -1;
+ 
+
 
 };

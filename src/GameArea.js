@@ -7,7 +7,7 @@ var MyGameArea = function() {
   this.lady = "./img/Lady";
   this.turn = new Turn(this);
   this.weather = new Weather();
-  this.building = new Building(this.ctx);
+  this.building = new Building(this);
   this.player1 = new Character(this, this.building, 1, 2, 1, this.tocho);
   this.player2 = new Character(this, this.building, 1, 2, 2, this.lady);
   this.playersArray = [this.player1, this.player2];
@@ -31,10 +31,12 @@ var MyGameArea = function() {
     this.proyectile2 = null;
     this.proyectile1 = new Proyectile(this, this.building, this.player1, 1);
     this.proyectile2 = new Proyectile(this, this.building, this.player2, 2);
-    this.proyectile1.positionx = this.player1.positionx;
-    this.proyectile1.positiony = this.player1.positiony;
-    this.proyectile2.positionx = this.player2.positionx;
-    this.proyectile2.positiony = this.player2.positiony;
+    this.proyectile1.positionx = this.player1.currentBuilding.positionx+60;
+    this.proyectile1.positiony = this.player1.currentBuilding.positiony-40;
+    this.proyectile2.positionx = this.player2.currentBuilding.positionx+20;
+    this.proyectile2.positiony = this.player2.currentBuilding.positiony-40;
+    // console.log(this.proyectile1.positiony)
+    // console.log(this.player1.positiony)
   };
   //Dibuja el area , los edificios y los personajes, despues de limpiar el canvas
   MyGameArea.prototype.drawArea = function() {
