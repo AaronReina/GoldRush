@@ -12,51 +12,54 @@ var Turn = function(MygameArea) {
   Turn.prototype.turnos = function(option) {
     switch (option) {
       case 1:
-       
         var that = this;
         that.draw1 = false;
         that.draw2 = false;
         //En el primer turno actualiza las fisicas e inicia los eventos click que asignan valores de fuerza y angulo
 
         that.player1Node.classList.remove("buttonsOf");
-        that.buttons[0].onclick = function() {
-          that.area.proyectile1.strenght = parseInt(that.inputs[0].value);
-          
-        };
-        that.buttons[1].onclick = function() {
-          that.area.proyectile1.angle = parseInt(that.inputs[1].value);
-          
-        };
-        that.buttons[2].onclick = function() {
-          //se vuelven a actualizar las fisicas con los nuevos valores
-          that.area.proyectile1.physics();
-          that.draw1 = true;
 
-       
+        that.buttons[0].onclick = function() {
+          if (that.inputs[0].value != "" &&
+          that.inputs[1].value != "" &&
+          that.inputs[0].value > -1 &&
+          that.inputs[0].value < 701 &&
+          that.inputs[1].value > -1 &&
+          that.inputs[1].value < 91) {
+            that.area.proyectile1.angle = parseInt(that.inputs[1].value);
+            that.area.proyectile1.strenght = parseInt(that.inputs[0].value);
+            //se vuelven a actualizar las fisicas con los nuevos valores
+            that.area.proyectile1.physics();
+            that.draw1 = true;
+          }
+
           //inicia un loop
           //pinta el area y comprueba los impactos
         };
         break;
 
       case 2:
-        
         //realiza el mismo proceso que en el caso uno pero con las referencias del caso 2
         var that = this;
         that.draw1 = false;
         that.draw2 = false;
         that.player2Node.classList.remove("buttonsOf");
-        that.buttons[3].onclick = function() {
-          that.area.proyectile2.strenght = parseInt(that.inputs[2].value);
-          
-        };
-        that.buttons[4].onclick = function() {
-          that.area.proyectile2.angle = parseInt(that.inputs[3].value);
-          
-        };
-        that.buttons[5].onclick = function() {
-          that.area.proyectile2.physics();
-          that.draw2 = true;
-          
+
+        that.buttons[1].onclick = function() {
+          if (
+            that.inputs[2].value != "" &&
+            that.inputs[3].value != "" &&
+            that.inputs[2].value > -1 &&
+            that.inputs[2].value < 701 &&
+            that.inputs[3].value > -1 &&
+            that.inputs[3].value < 91
+            
+          ) {
+            that.area.proyectile2.strenght = parseInt(that.inputs[2].value);
+            that.area.proyectile2.angle = parseInt(that.inputs[3].value);
+            that.area.proyectile2.physics();
+            that.draw2 = true;
+          }
         };
         break;
     }

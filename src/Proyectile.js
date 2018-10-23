@@ -106,5 +106,6 @@ Proyectile.prototype.collisionPlayer = function() {
   }
 };
 Proyectile.prototype.explosion = function() {
+  
   //realizara una animacion al colisionar
 };
