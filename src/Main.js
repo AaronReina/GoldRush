@@ -4,15 +4,13 @@ window.onload = function() {
   var gameArea = new MyGameArea();
   //Genera las posiciones iniciales, y el array de edificios.
   gameArea.start();
+  gameArea.weather.randomWind();
   gameArea.turn.turnos(1);
-  loop();
-  var delta = 0;
-  var lastTime = 0;
-  function loop(time) {
-    delta = time - lastTime;
 
-    lastTime = time;
-    gameArea.fps = 1000 / delta;
+  loop();
+  
+  function loop() {
+    
     //dibuja edificios y personajes.
     gameArea.drawArea();
     if (gameArea.turn.draw1 === true) {

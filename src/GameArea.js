@@ -6,7 +6,7 @@ var MyGameArea = function() {
   this.tocho = "./img/Tocho";
   this.lady = "./img/Lady";
   this.turn = new Turn(this);
-  this.weather = new Weather();
+  this.weather = new Weather(this);
   this.building = new Building(this);
   this.player1 = new Character(this, this.building, 1, 2, 1, this.tocho);
   this.player2 = new Character(this, this.building, 1, 2, 2, this.lady);
@@ -44,6 +44,8 @@ var MyGameArea = function() {
     this.building.draw();
     this.player1.draw();
     this.player2.draw();
+    this.weather.drawClouds()
+    this.weather.updateClouds()
   };
   //Dibuja el proyectil 1, actualiza su posicion y comprueba sus colisiones
   MyGameArea.prototype.drawTurn1 = function() {
