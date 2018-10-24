@@ -1,4 +1,4 @@
-var MyGameArea = function(player1,player2) {
+var MyGameArea = function(player1, player2) {
   //instancia los objetos necesarios
   this.fps = 0;
   this.canvas = document.querySelector("#Canvas");
@@ -31,10 +31,10 @@ var MyGameArea = function(player1,player2) {
     this.proyectile2 = null;
     this.proyectile1 = new Proyectile(this, this.building, this.player1, 1);
     this.proyectile2 = new Proyectile(this, this.building, this.player2, 2);
-    this.proyectile1.positionx = this.player1.currentBuilding.positionx+60;
-    this.proyectile1.positiony = this.player1.currentBuilding.positiony-40;
-    this.proyectile2.positionx = this.player2.currentBuilding.positionx+20;
-    this.proyectile2.positiony = this.player2.currentBuilding.positiony-40;
+    this.proyectile1.positionx = this.player1.currentBuilding.positionx + 60;
+    this.proyectile1.positiony = this.player1.currentBuilding.positiony - 40;
+    this.proyectile2.positionx = this.player2.currentBuilding.positionx + 20;
+    this.proyectile2.positiony = this.player2.currentBuilding.positiony - 40;
     // console.log(this.proyectile1.positiony)
     // console.log(this.player1.positiony)
   };
@@ -44,8 +44,8 @@ var MyGameArea = function(player1,player2) {
     this.building.draw();
     this.player1.draw();
     this.player2.draw();
-    this.weather.drawClouds()
-    this.weather.updateClouds()
+    this.weather.drawClouds();
+    this.weather.updateClouds();
   };
   //Dibuja el proyectil 1, actualiza su posicion y comprueba sus colisiones
   MyGameArea.prototype.drawTurn1 = function() {

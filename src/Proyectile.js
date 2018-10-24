@@ -21,9 +21,7 @@ var Proyectile = function(MyGameArea, Buildings, Character, turn) {
 };
 //Esta funcion pinta el proyectil y le asigna un punto de salida en funcion del jugador.
 Proyectile.prototype.draw = function() {
- 
-    this.context.drawImage(this.img, this.positionx, this.positiony, 10, 10);
-  
+  this.context.drawImage(this.img, this.positionx, this.positiony, 10, 10);
 };
 //esta funcion actualiza las fisicas del proyectil y cambia el valor de x a negativo para el turno del player 2
 Proyectile.prototype.physics = function() {
@@ -79,14 +77,14 @@ Proyectile.prototype.collisionBuild = function() {
 //esta variable comprueba la posicion de los jugadores, con la del proyectil y cambia la variable impactPlayer si se produce el impacto
 Proyectile.prototype.collisionPlayer = function() {
   var play = this.myGameArea.playersArray;
-  var maxxPlayer1 = play[0].currentBuilding.positionx +50;
-  var minxPlayer1 = play[0].currentBuilding.positionx +20;
-  var maxyPlayer1 = play[0].currentBuilding.positiony ;
-  var minyPlayer1 = play[0].currentBuilding.positiony -35;
-  var maxxPlayer2 = play[1].currentBuilding.positionx  +60;
-  var minxPlayer2 = play[1].currentBuilding.positionx+30;
-  var maxyPlayer2 = play[1].currentBuilding.positiony ;
-  var minyPlayer2 = play[1].currentBuilding.positiony -35;
+  var maxxPlayer1 = play[0].currentBuilding.positionx + 50;
+  var minxPlayer1 = play[0].currentBuilding.positionx + 20;
+  var maxyPlayer1 = play[0].currentBuilding.positiony;
+  var minyPlayer1 = play[0].currentBuilding.positiony - 35;
+  var maxxPlayer2 = play[1].currentBuilding.positionx + 60;
+  var minxPlayer2 = play[1].currentBuilding.positionx + 30;
+  var maxyPlayer2 = play[1].currentBuilding.positiony;
+  var minyPlayer2 = play[1].currentBuilding.positiony - 35;
 
   if (
     this.positionx > minxPlayer1 &&
@@ -104,18 +102,8 @@ Proyectile.prototype.collisionPlayer = function() {
     this.impactPlayer2 = true;
   }
 };
-Proyectile.prototype.explosion = function(impactx,impacty) {
-
-  this.context.drawImage(
-    this.imgExplode,
-    0,
-    0,
-    0,
-    0,
-    impactx,
-    impacty,
-    20,
-    20);
+Proyectile.prototype.explosion = function(impactx, impacty) {
+  // this.context.drawImage(this.imgExplode, 0, 0, 0, 0, impactx, impacty, 20, 20);
 
   //realizara una animacion al colisionar
 };

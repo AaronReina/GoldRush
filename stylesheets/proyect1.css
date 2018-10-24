@@ -1,20 +1,18 @@
-
 @font-face {
-  font-family: 'Western Normal';
+  font-family: "Western Normal";
   font-style: normal;
   font-weight: normal;
-  src: local('Western Normal'), url('WEST____.woff') format('woff');
-  }
+  src: local("Western Normal"), url("WEST____.woff") format("woff");
+}
 
-
-  input{
-    font-family:'Western Normal';
-    font-size: 16px;
-    padding: 8px ;
-    outline-color: brown
-  }
-.buttonFinal{
-  font-family:'Western Normal';
+input {
+  font-family: "Western Normal";
+  font-size: 16px;
+  padding: 8px;
+  outline-color: brown;
+}
+.buttonFinal {
+  font-family: "Western Normal";
   background-color: rgb(216, 113, 76);
   padding: 8px 12px;
   text-align: center;
@@ -23,33 +21,37 @@
   border: 2px solid black;
   margin-top: 5px;
   border-radius: 5px;
-  outline-color: brown
-
-
+  outline-color: brown;
 }
 
-h1,h2,h3,h4{
-   font-size: 20px;
+h1,
+h2,
+h3,
+h4 {
+  font-size: 20px;
   color: rgb(215, 183, 64);
   text-align: center;
-  font-family:'Western Normal';
+  font-family: "Western Normal";
 }
-h3 { font-size: 30px;}
-h1 { font-size: 50px;}
-h2 { font-size: 40px;}
- 
+h3 {
+  font-size: 30px;
+}
+h1 {
+  font-size: 50px;
+}
+h2 {
+  font-size: 40px;
+}
+
 body {
   height: 100%;
-  }
-  
-  html {
+}
+
+html {
   height: 100%;
-  }
+}
 .back1 {
   overflow: hidden;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   height: 100%;
   background-image: url("../img/Wanted-background.jpg");
   background-repeat: no-repeat;
@@ -59,13 +61,12 @@ body {
   margin: 0;
   overflow: hidden;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
   height: 100%;
   background-image: url("../img/chooseBackground.jpeg");
   background-repeat: no-repeat;
   background-size: 100%, 100%;
 }
-
 
 #BackCanvas {
   display: block;
@@ -75,52 +76,48 @@ flex-direction: column;
   width: 1000px;
   height: 800px;
 }
-.buttonsOf{
+.buttonsOf {
   pointer-events: none;
   opacity: 0;
 }
 
-
 #total {
-margin: 0;
-overflow: hidden;
-display: flex;
-justify-content: space-around;
-align-items: center;
-height: 100%;
-
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
 }
-.players{
-
+.players {
   width: 200px;
   height: 300px;
- background-repeat: no-repeat;
-  background-size: 100%,100%;
+  background-repeat: no-repeat;
+  background-size: 100%, 100%;
   background-color: transparent;
-  border: transparent
+  border: transparent;
 }
 
-.player1{
- background-image: url("../img/Clay1.png");
+.player1 {
+  background-image: url("../img/Clay1.png");
 }
-.player2{
+.player2 {
   background-image: url("../img/Jane1.png");
- }
- .player3{
+}
+.player3 {
   background-image: url("../img/Jebediah1.png");
- }
- .player4{
+}
+.player4 {
   background-image: url("../img/Ahusaka1.png");
- }
-.playerButons{
+}
+.playerButons {
   width: 200px;
   height: 250px;
-  background-size: 100%,100%;
+  background-size: 100%, 100%;
   background-color: transparent;
   border: transparent;
   outline-color: transparent;
 }
-
 
 .row {
   margin: 0;
@@ -128,18 +125,26 @@ height: 100%;
   justify-content: space-around;
   align-items: flex-start;
   height: 100%;
-  
-  }
-  .buttonStart{
-    font-family:'Western Normal';
-    background-color: rgb(22, 123, 211);
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 25px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    
-  }
-  
+}
+.buttonStart {
+  font-family: "Western Normal";
+  background-color: rgb(22, 123, 211);
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.back3 {
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-image: url("../img/winBackground.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%, 100%;
+}
