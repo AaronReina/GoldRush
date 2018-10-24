@@ -16,15 +16,14 @@ var Proyectile = function(MyGameArea, Buildings, Character, turn) {
   this.accelerationx = 0;
   this.img = new Image();
   this.img.src = "./img/bomb.png";
+  this.imgExplode = new Image();
+  this.imgExplode.src = "./img/explosion.png";
 };
 //Esta funcion pinta el proyectil y le asigna un punto de salida en funcion del jugador.
 Proyectile.prototype.draw = function() {
-  if (this.turn === 1) {
+ 
     this.context.drawImage(this.img, this.positionx, this.positiony, 10, 10);
-  }
-  if (this.turn === 2) {
-    this.context.drawImage(this.img, this.positionx, this.positiony, 10, 10);
-  }
+  
 };
 //esta funcion actualiza las fisicas del proyectil y cambia el valor de x a negativo para el turno del player 2
 Proyectile.prototype.physics = function() {
@@ -105,7 +104,18 @@ Proyectile.prototype.collisionPlayer = function() {
     this.impactPlayer2 = true;
   }
 };
-Proyectile.prototype.explosion = function() {
-  
+Proyectile.prototype.explosion = function(impactx,impacty) {
+
+  this.context.drawImage(
+    this.imgExplode,
+    0,
+    0,
+    0,
+    0,
+    impactx,
+    impacty,
+    20,
+    20);
+
   //realizara una animacion al colisionar
 };

@@ -13,7 +13,7 @@
     padding: 8px ;
     outline-color: brown
   }
-button{
+.buttonFinal{
   font-family:'Western Normal';
   background-color: rgb(216, 113, 76);
   padding: 8px 12px;
@@ -28,17 +28,40 @@ button{
 
 }
 
-html {
-  height: 100%;
+h1,h2,h3,h4{
+   font-size: 20px;
+  color: rgb(215, 183, 64);
+  text-align: center;
+  font-family:'Western Normal';
 }
+h3 { font-size: 30px;}
+h1 { font-size: 50px;}
+h2 { font-size: 40px;}
+ 
 body {
-  margin: 0;
+  height: 100%;
+  }
+  
+  html {
+  height: 100%;
+  }
+.back1 {
   overflow: hidden;
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 100%;
   background-image: url("../img/Wanted-background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%, 100%;
+}
+.back2 {
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+flex-direction: column;
+  height: 100%;
+  background-image: url("../img/chooseBackground.jpeg");
   background-repeat: no-repeat;
   background-size: 100%, 100%;
 }
@@ -56,3 +79,67 @@ body {
   pointer-events: none;
   opacity: 0;
 }
+
+
+#total {
+margin: 0;
+overflow: hidden;
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 100%;
+
+}
+.players{
+
+  width: 200px;
+  height: 300px;
+ background-repeat: no-repeat;
+  background-size: 100%,100%;
+  background-color: transparent;
+  border: transparent
+}
+
+.player1{
+ background-image: url("../img/Clay1.png");
+}
+.player2{
+  background-image: url("../img/Jane1.png");
+ }
+ .player3{
+  background-image: url("../img/Jebediah1.png");
+ }
+ .player4{
+  background-image: url("../img/Ahusaka1.png");
+ }
+.playerButons{
+  width: 200px;
+  height: 250px;
+  background-size: 100%,100%;
+  background-color: transparent;
+  border: transparent;
+  outline-color: transparent;
+}
+
+
+.row {
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 100%;
+  
+  }
+  .buttonStart{
+    font-family:'Western Normal';
+    background-color: rgb(22, 123, 211);
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    
+  }
+  

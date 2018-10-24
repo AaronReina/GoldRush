@@ -22,12 +22,12 @@ Weather.prototype.drawClouds = function() {
 };
 Weather.prototype.updateClouds = function() {
  
-  this.positionx += this.wind/10;
+  this.positionx -= this.wind/10;
   
-  if (this.wind>0){
+  if (this.wind<0){
   if(this.positionx>1000){this.positionx=-200}}
 
- else if (this.wind<0){
+ else if (this.wind>0){
   if(this.positionx<-200){this.positionx=1000}}
 
   //actualizara la posicion de las nubes
