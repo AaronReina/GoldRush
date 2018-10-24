@@ -70,6 +70,7 @@ var Turn = function(MygameArea) {
       this.player1Node.classList.add("buttonsOf");
       this.turnos(2);
     } else if (this.area.proyectile1.impactPlayer2 === true) {
+      this.area.initialPro();
       this.area.player2.life--;
       this.area.proyectile1.impactPlayer2 === false;
       if (this.area.player2.life < 1) {
@@ -83,6 +84,7 @@ var Turn = function(MygameArea) {
       this.player2Node.classList.add("buttonsOf");
       this.turnos(1);
     } else if (this.area.proyectile2.impactPlayer1 === true) {
+      this.area.initialPro();
       this.area.proyectile2.impactPlayer1 === false;
       this.area.player1.life--;
       if (this.area.player1.life < 1) {

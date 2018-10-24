@@ -9,6 +9,7 @@ var Building = function(gameArea) {
   this.img2.src = "./img/mountain2.jpeg";
   this.img3 = new Image();
   this.img3.src = "./img/mountain3.png";
+  this.audioExplosion2= new Audio("./sounds/Explosion2.mp3");
 };
 //Esta funcion genera edificios con ancho y alto aleatorios y los mete en un array previamente declarado
 Building.prototype.random = function() {
@@ -71,6 +72,7 @@ Building.prototype.damage = function(building, i) {
   building[i].life--;
   if (building[i].life===0){
    this.reduction(building,i)
+   this.audioExplosion2.play()
   }
 
   // restara vida al edificio al colisionar

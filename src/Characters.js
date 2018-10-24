@@ -9,7 +9,8 @@ var Character = function(MyGameArea, Building, life, damage, player, image) {
   this.damage = damage;
   this.life = life;
   this.img = new Image();
-  this.img.src = image + player + ".png";
+  this.img.src = "./img/" +image + player + ".png";
+  this.winner ;
 };
 //Situa a cada personaje encima de un edificio proximo a su lado, de forma aleatoria, teniendo en cuenta si se trata del jugador uno o el dos.
 Character.prototype.position = function() {
@@ -40,5 +41,10 @@ Character.prototype.draw = function() {
 
 Character.prototype.die = function() {
   //indica con una alerta que jugador gana (en el futuro realizara otras acciones)
-  alert("Player " + this.player + " loose");
+  if(this.player ===1){ this.winner= window.player2}
+  else {this.winner= window.player1}
+  var finalString =
+      '<div class="back3"><p class = "Winnnnner">YOU ARE THE WINNER!!!</p><div class ="playerButons"> <div class = "'+this.winner+' players"></div></div></div>'
+      window.gameShow[0].innerHTML = "";
+    window.gameShow[0].innerHTML = finalString;
 };

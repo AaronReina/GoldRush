@@ -18,6 +18,8 @@ var Proyectile = function(MyGameArea, Buildings, Character, turn) {
   this.img.src = "./img/bomb.png";
   this.imgExplode = new Image();
   this.imgExplode.src = "./img/explosion.png";
+  this.audioExplosion1 = new Audio("./sounds/Explosion1.mp3");
+ 
 };
 //Esta funcion pinta el proyectil y le asigna un punto de salida en funcion del jugador.
 Proyectile.prototype.draw = function() {
@@ -70,6 +72,7 @@ Proyectile.prototype.collisionBuild = function() {
     ) {
       that.buildings.damage(build, i);
       that.impactBuild = true;
+      this.audioExplosion1.play()
     }
   }
 };
@@ -93,6 +96,7 @@ Proyectile.prototype.collisionPlayer = function() {
     this.positiony > minyPlayer1
   ) {
     this.impactPlayer1 = true;
+    this.audioExplosion1.play()
   } else if (
     this.positionx > minxPlayer2 &&
     this.positionx < maxxPlayer2 &&
@@ -100,6 +104,7 @@ Proyectile.prototype.collisionPlayer = function() {
     this.positiony > minyPlayer2
   ) {
     this.impactPlayer2 = true;
+    this.audioExplosion1.play()
   }
 };
 Proyectile.prototype.explosion = function(impactx, impacty) {
