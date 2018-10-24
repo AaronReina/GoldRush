@@ -79,8 +79,8 @@ Proyectile.prototype.collisionBuild = function() {
 //esta variable comprueba la posicion de los jugadores, con la del proyectil y cambia la variable impactPlayer si se produce el impacto
 Proyectile.prototype.collisionPlayer = function() {
   var play = this.myGameArea.playersArray;
-  var maxxPlayer1 = play[0].currentBuilding.positionx +60;
-  var minxPlayer1 = play[0].currentBuilding.positionx +30;
+  var maxxPlayer1 = play[0].currentBuilding.positionx +50;
+  var minxPlayer1 = play[0].currentBuilding.positionx +20;
   var maxyPlayer1 = play[0].currentBuilding.positiony ;
   var minyPlayer1 = play[0].currentBuilding.positiony -35;
   var maxxPlayer2 = play[1].currentBuilding.positionx  +60;
