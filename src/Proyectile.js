@@ -19,11 +19,15 @@ var Proyectile = function(MyGameArea, Buildings, Character, turn) {
   this.imgExplode = new Image();
   this.imgExplode.src = "./img/explosion.png";
   this.audioExplosion1 = new Audio("./sounds/Explosion1.mp3");
+  this.frame=0;
+  this.frameCount=0;
+  
  
 };
 //Esta funcion pinta el proyectil y le asigna un punto de salida en funcion del jugador.
 Proyectile.prototype.draw = function() {
   this.context.drawImage(this.img, this.positionx, this.positiony, 10, 10);
+ 
 };
 //esta funcion actualiza las fisicas del proyectil y cambia el valor de x a negativo para el turno del player 2
 Proyectile.prototype.physics = function() {
@@ -64,15 +68,19 @@ Proyectile.prototype.collisionBuild = function() {
 
     if (that.positionx < 0 || that.positionx > 1000 || that.positiony > 800) {
       that.impactBuild = true;
+     
     } else if (
       that.positionx > minxBuild &&
       that.positionx < maxxBuild &&
       that.positiony < maxyBuild &&
       that.positiony > minyBuild
     ) {
+      that.myGameArea.lastPositionX=that.positionx 
+      that.myGameArea.lastPositionY=that.positiony 
       that.buildings.damage(build, i);
       that.impactBuild = true;
-      this.audioExplosion1.play()
+      that.myGameArea.startExplosion= true;
+      that.audioExplosion1.play()
     }
   }
 };
@@ -95,7 +103,10 @@ Proyectile.prototype.collisionPlayer = function() {
     this.positiony < maxyPlayer1 &&
     this.positiony > minyPlayer1
   ) {
+    this.myGameArea.lastPositionX=this.positionx 
+    this.myGameArea.lastPositionY=this.positiony 
     this.impactPlayer1 = true;
+    this.myGameArea.startExplosion= true;
     this.audioExplosion1.play()
   } else if (
     this.positionx > minxPlayer2 &&
@@ -103,12 +114,50 @@ Proyectile.prototype.collisionPlayer = function() {
     this.positiony < maxyPlayer2 &&
     this.positiony > minyPlayer2
   ) {
+    this.myGameArea.lastPositionX=this.positionx 
+    this.myGameArea.lastPositionY=this.positiony 
     this.impactPlayer2 = true;
+    this.myGameArea.startExplosion= true;
     this.audioExplosion1.play()
   }
 };
-Proyectile.prototype.explosion = function(impactx, impacty) {
-  // this.context.drawImage(this.imgExplode, 0, 0, 0, 0, impactx, impacty, 20, 20);
+Proyectile.prototype.explosion = function() {
+  
+  this.context.drawImage(this.imgExplode, this.frame, 0, 96, 96, this.myGameArea.lastPositionX-30, this.myGameArea.lastPositionY-30, 60, 60);
+  if (this.frameCount%5===0){
+this.frame +=96
+this.frameCount++
+  }
+else if(this.frameCount>60){
+  this.frameCount=0
+  this.frame=0
+  this.myGameArea.startExplosion =false
+
+}else{
+  this.frameCount++
+}
+  
+ 
+
+  //realizara una animacion al colisionar
+};
+Proyectile.prototype.bigExplosion = function() {
+  
+  this.context.drawImage(this.imgExplode, this.frame, 0, 96, 96, this.myGameArea.lastPositionX-150, this.myGameArea.lastPositionY-250, 300, 500);
+  if (this.frameCount%5===0){
+this.frame +=96
+this.frameCount++
+  }
+else if(this.frameCount>60){
+  this.frameCount=0
+  this.frame=0
+  this.myGameArea.startBigExplosion =false
+
+}else{
+  this.frameCount++
+}
+  
+ 
 
   //realizara una animacion al colisionar
 };

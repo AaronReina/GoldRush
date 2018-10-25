@@ -79,6 +79,7 @@ Building.prototype.damage = function(building, i) {
 };
 
 Building.prototype.reduction = function(building, i) {
+  this.gameArea.startBigExplosion=true
   building[i].positiony = 750;
   building[i].life = -1;
  

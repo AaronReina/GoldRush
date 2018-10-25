@@ -13,6 +13,10 @@ var MyGameArea = function(player1, player2) {
   this.playersArray = [this.player1, this.player2];
   this.proyectile1 = new Proyectile(this, this.building, this.player1, 1);
   this.proyectile2 = new Proyectile(this, this.building, this.player2, 2);
+  this.startExplosion=false;
+  this.startBigExplosion=false;
+  this.lastPositionX;
+  this.lastPositionY;
 
   //funcion que limpia el canvas
   MyGameArea.prototype.clear = function() {
@@ -46,6 +50,10 @@ var MyGameArea = function(player1, player2) {
     this.player2.draw();
     this.weather.drawClouds();
     this.weather.updateClouds();
+    if(this.startExplosion=== true){this.proyectile1.explosion()}
+    if(this.startExplosion=== true){this.proyectile2.explosion()}
+    if(this.startBigExplosion=== true){this.proyectile1.bigExplosion()}
+    if(this.startBigExplosion=== true){this.proyectile2.bigExplosion()}
   };
   //Dibuja el proyectil 1, actualiza su posicion y comprueba sus colisiones
   MyGameArea.prototype.drawTurn1 = function() {
@@ -53,6 +61,8 @@ var MyGameArea = function(player1, player2) {
     this.proyectile1.updateMove(this.weather.gravity, this.weather.wind);
     this.proyectile1.collisionBuild();
     this.proyectile1.collisionPlayer();
+   
+    
   };
   //Dibuja el proyectil 2, actualiza su posicion y comprueba sus colisiones
   MyGameArea.prototype.drawTurn2 = function() {
@@ -60,5 +70,6 @@ var MyGameArea = function(player1, player2) {
     this.proyectile2.updateMove(this.weather.gravity, this.weather.wind);
     this.proyectile2.collisionBuild();
     this.proyectile2.collisionPlayer();
+   
   };
 };

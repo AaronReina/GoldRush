@@ -80,9 +80,10 @@ var Turn = function(MygameArea) {
   };
   Turn.prototype.check2 = function() {
     if (this.area.proyectile2.impactBuild === true) {
-      this.area.initialPro();
+      
       this.player2Node.classList.add("buttonsOf");
       this.turnos(1);
+      this.area.initialPro();
     } else if (this.area.proyectile2.impactPlayer1 === true) {
       this.area.initialPro();
       this.area.proyectile2.impactPlayer1 === false;

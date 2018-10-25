@@ -4,7 +4,9 @@ window.onload = function() {
   var audioJane = new Audio("./sounds/Jane.mp3");
   var audioAhusaka = new Audio("./sounds/Ahusaka.mp3");
   var audioJebediah = new Audio("./sounds/Jebediah.mp3");
-
+  var audioGame = new Audio("./sounds/Selection.mp3");
+  audioGame.loop=true;
+  audioGame.volume=0.1;
   var inicio = document.getElementsByTagName("button");
   var choose = document.getElementsByTagName("h2");
   var choose2 = "SELECT PLAYER TWO";
@@ -68,7 +70,7 @@ window.onload = function() {
   inicio[4].onclick = function() {
     var gameHtml =
       '<div class="back1"><div id="total"> <div id="player1"><div><input type="number" class="strenghtPlayer1" placeholder="Strenght 0 to 700"></div><div><input type="number" class="anglePlayer1" placeholder="Angle 0 to 90"></div><button type="button" class="AttackPlayer1 buttonFinal"> Attack!!! </button></div><div id="BackCanvas"><canvas id="Canvas" width="1000" height="800"></canvas></div><div id="player2" class="buttonsOf"><div><input type="number" class="strenghtPlayer2" placeholder="Strenght 0 to 700"></div><div><input type="number" class="anglePlayer2" placeholder="Angle 0 to 90"></div><button type="button" class="AttackPlayer2 buttonFinal"> Attack!!! </button></div></div></div>';
-
+      audioGame.play()
     window.gameShow = document.getElementsByTagName("body");
     gameShow[0].innerHTML = "";
     gameShow[0].innerHTML = gameHtml;
@@ -93,6 +95,7 @@ window.onload = function() {
         gameArea.drawTurn2();
         gameArea.turn.check2();
       }
+      
       window.requestAnimationFrame(loop);
     }
   };
