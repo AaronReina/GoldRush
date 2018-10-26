@@ -46,6 +46,9 @@ Character.prototype.die = function() {
   this.selectDom.case2.classList.add("caseOf");
   this.selectDom.winner.classList.add(this.winner);
     this.selectDom.case3.classList.remove("caseOf");
+    this.selectDom.audioGame.pause();
+    this.selectDom.audioGame.currentTime = 0;
+    this.selectDom.audioFinal.play()
     
     
     
