@@ -1,50 +1,44 @@
 var Turn = function(gameArea) {
-  //Seleccion diversos nodos del DOM (deberia ir en otro sitio, hay que revisarlo)
   this.area = gameArea;
   this.draw1 = false;
   this.draw2 = false;
-  this.buttons = document.getElementsByTagName("button");
-  this.inputs = document.getElementsByTagName("input");
-  this.player1Node = document.querySelector("#player1");
-  this.player2Node = document.querySelector("#player2");
-
-  //Se genera una funcion que cambia segun el turno
+  this.buttons = this.area.selectDom.inicio;
+  this.inputs = this.area.selectDom.inputs;
+  this.player1Node = this.area.selectDom.player1Node;
+  this.player2Node = this.area.selectDom.player2Node;
+  //this function start turns
   Turn.prototype.turnos = function(option) {
     switch (option) {
       case 1:
+        //restart the draw flags and remove toher player buttons
         var that = this;
         that.draw1 = false;
         that.draw2 = false;
-        //En el primer turno actualiza las fisicas e inicia los eventos click que asignan valores de fuerza y angulo
-
         that.player1Node.classList.remove("buttonsOf");
-
+        //take the values of the inputs on click only if they are inside the selected parameters
         that.buttons[5].onclick = function() {
-          if (that.inputs[0].value != "" &&
-          that.inputs[1].value != "" &&
-          that.inputs[0].value > -1 &&
-          that.inputs[0].value < 701 &&
-          that.inputs[1].value > -1 &&
-          that.inputs[1].value < 91) {
+          if (
+            that.inputs[0].value != "" &&
+            that.inputs[1].value != "" &&
+            that.inputs[0].value > -1 &&
+            that.inputs[0].value < 701 &&
+            that.inputs[1].value > -1 &&
+            that.inputs[1].value < 91
+          ) {
             that.area.proyectile1.angle = parseInt(that.inputs[1].value);
             that.area.proyectile1.strenght = parseInt(that.inputs[0].value);
-            //se vuelven a actualizar las fisicas con los nuevos valores
+            //restart the proyectile physics and set the draw turn 1 flag on true
             that.area.proyectile1.physics();
             that.draw1 = true;
           }
-
-          //inicia un loop
-          //pinta el area y comprueba los impactos
         };
         break;
-
       case 2:
-        //realiza el mismo proceso que en el caso uno pero con las referencias del caso 2
+        //a clone of turn 1 calling the options of turn 2
         var that = this;
         that.draw1 = false;
         that.draw2 = false;
         that.player2Node.classList.remove("buttonsOf");
-
         that.buttons[6].onclick = function() {
           if (
             that.inputs[2].value != "" &&
@@ -53,7 +47,6 @@ var Turn = function(gameArea) {
             that.inputs[2].value < 701 &&
             that.inputs[3].value > -1 &&
             that.inputs[3].value < 91
-            
           ) {
             that.area.proyectile2.strenght = parseInt(that.inputs[2].value);
             that.area.proyectile2.angle = parseInt(that.inputs[3].value);
@@ -64,6 +57,7 @@ var Turn = function(gameArea) {
         break;
     }
   };
+  //check flags of impacts and call the necesary functions in every case
   Turn.prototype.check1 = function() {
     if (this.area.proyectile1.impactBuild === true) {
       this.area.initialPro();
@@ -78,9 +72,9 @@ var Turn = function(gameArea) {
       }
     }
   };
+  //check flags of impacts and call the necesary functions in every case
   Turn.prototype.check2 = function() {
     if (this.area.proyectile2.impactBuild === true) {
-      
       this.player2Node.classList.add("buttonsOf");
       this.turnos(1);
       this.area.initialPro();

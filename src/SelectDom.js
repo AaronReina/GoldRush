@@ -1,4 +1,5 @@
 var SelectDom = function() {
+  //initialize sounds and take nodes of the dom
   this.audioClay = new Audio("./sounds/Clay.mp3");
   this.audioJane = new Audio("./sounds/Jane.mp3");
   this.audioAhusaka = new Audio("./sounds/Ahusaka.mp3");
@@ -8,6 +9,11 @@ var SelectDom = function() {
   this.audioGame.loop=true;
   this.audioGame.volume=0.1;
   this.audioFinal.loop=true;
+  this.canvas = document.querySelector("#Canvas");
+  this.ctx = this.canvas.getContext("2d");
+  this.inputs = document.getElementsByTagName("input");
+  this.player1Node = document.querySelector("#player1");
+  this.player2Node = document.querySelector("#player2");
   this.inicio = document.getElementsByTagName("button");
   this.choose = document.getElementsByTagName("h2");
   this.case1 = document.getElementById("Case1");
@@ -20,12 +26,10 @@ var SelectDom = function() {
   this.player1;
   this.player2;
   this.startGame= false
-
+  //choose characters in the first html case
   SelectDom.prototype.selection1 = function() {
-  
     this.audioClay.play()
     if (this.player === 1) {
-      console.log("algo2")
       this.player1 = "Clay";
       this.player++;
       this.choose[0].innerText = this.choose2;
@@ -36,7 +40,6 @@ var SelectDom = function() {
       this.choose[0].innerText = this.play;
     }
   }
-
   SelectDom.prototype.selection2 = function() {
        this.audioJane.play()
     if (this.player === 1) {
@@ -51,7 +54,6 @@ var SelectDom = function() {
     }
   }
   SelectDom.prototype.selection3 = function() {
-  
     this.audioJebediah.play()
         if (this.player === 1) {
           this.player1 = "Jebediah";
@@ -64,7 +66,6 @@ var SelectDom = function() {
           this.choose[0].innerText = this.play;
         }
   }
-
   SelectDom.prototype.selection4 = function() {
     this.audioAhusaka.play()
         if (this.player === 1) {
@@ -78,6 +79,7 @@ var SelectDom = function() {
           this.choose[0].innerText = this.play;
         }
   }
+  //change the dom case and start the game
   SelectDom.prototype.selection5 = function() {
     this.case1.classList.add("caseOf");
     this.case2.classList.remove("caseOf");

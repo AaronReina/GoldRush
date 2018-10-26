@@ -1,6 +1,7 @@
-//Espera a que cargue la pagina y arranca.
 window.onload = function() {
+  //initialize the SelectDom
   var selectionDom = new SelectDom();
+  //if one of the buttons are pushed it calls to theyr function
   selectionDom.inicio[0].onclick = function() {
     selectionDom.selection1();
   };
@@ -15,14 +16,15 @@ window.onload = function() {
   };
   selectionDom.inicio[4].onclick = function() {
     selectionDom.selection5();
+    //initialize the gameArea with all the objects inside
     var gameArea = new MyGameArea(selectionDom);
-    //Genera las posiciones iniciales, y el array de edificios.
+    //call the first functions to start the game
     gameArea.start();
     gameArea.weather.randomWind();
     gameArea.turn.turnos(1);
     loop();
     function loop() {
-      //dibuja edificios y personajes.
+      //draw turns and make checks
       gameArea.drawArea();
       if (gameArea.turn.draw1 === true) {
         gameArea.drawTurn1();
