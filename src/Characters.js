@@ -1,13 +1,13 @@
-var Character = function(MyGameArea, Building, life, damage, player, image) {
+var Character = function(gameArea, Building,SelectDom, player, image) {
   //Asigna los diferentes valores a las variables internas relativas al personaje y los objetos que interactuan con el.
+ this.selectDom = SelectDom
   this.player = player;
   this.currentBuilding ;
   this.positionx;
   this.positiony
   this.building = Building.randomBuilding;
-  this.context = MyGameArea.ctx;
-  this.damage = damage;
-  this.life = life;
+  this.context = gameArea.ctx;
+  this.life = 1;
   this.img = new Image();
   this.img.src = "./img/" +image + player + ".png";
   this.winner ;
@@ -41,10 +41,10 @@ Character.prototype.draw = function() {
 
 Character.prototype.die = function() {
   //indica con una alerta que jugador gana (en el futuro realizara otras acciones)
-  if(this.player ===1){ this.winner= window.player2}
-  else {this.winner= window.player1}
+  if(this.player ===1){ this.winner= this.selectDom.player2}
+  else {this.winner= this.selectDom.player1}
   var finalString =
       '<div class="back3"><p class = "Winnnnner">YOU ARE THE WINNER!!!</p><div class ="playerButons"> <div class = "'+this.winner+' players"></div></div></div>'
-      window.gameShow[0].innerHTML = "";
-    window.gameShow[0].innerHTML = finalString;
+      this.selectDom.gameShow[0].innerHTML = "";
+      this.selectDom.gameShow[0].innerHTML = finalString;
 };

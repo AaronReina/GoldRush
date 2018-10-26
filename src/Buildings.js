@@ -3,8 +3,8 @@ var Building = function(gameArea) {
   this.randomBuilding = [];
   this.gameArea = gameArea
   this.context = gameArea.ctx;
-  this.img3 = new Image();
-  this.img3.src = "./img/mountain3.png";
+  this.img = new Image();
+  this.img.src = "./img/mountain.png";
   this.audioExplosion2= new Audio("./sounds/Explosion2.mp3");
 };
 //Esta funcion genera edificios con ancho y alto aleatorios y los mete en un array previamente declarado
@@ -32,17 +32,14 @@ Building.prototype.random = function() {
 };
 
 Building.prototype.draw = function() {
-  var img;
   this.context.beginPath();
 
   //crea un bucle que recorre el array de edificios y los pinta a partir de una textura
   for (var i = 0; i < this.randomBuilding.length; i++) {
     var x = this.randomBuilding[i].positionx;
     var y = this.randomBuilding[i].positiony;
-    var alto = this.randomBuilding[i].height;
     var ancho = this.randomBuilding[i].width;
-    img = this.img3;
-    var pat = this.context.createPattern(img, "repeat");
+    var pat = this.context.createPattern(this.img, "repeat");
 
     this.context.fillStyle = pat;
 

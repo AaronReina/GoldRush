@@ -1,6 +1,6 @@
-var Turn = function(MygameArea) {
+var Turn = function(gameArea) {
   //Seleccion diversos nodos del DOM (deberia ir en otro sitio, hay que revisarlo)
-  this.area = MygameArea;
+  this.area = gameArea;
   this.draw1 = false;
   this.draw2 = false;
   this.buttons = document.getElementsByTagName("button");

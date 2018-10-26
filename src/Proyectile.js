@@ -1,4 +1,4 @@
-var Proyectile = function(MyGameArea, Buildings, Character, turn) {
+var Proyectile = function(gameArea, Buildings, Character, turn) {
   //Se declaran todas las variabes que utilizan el proyectil y sus metodos.
   this.impactBuild = false;
   this.impactPlayer1 = false;
@@ -7,8 +7,8 @@ var Proyectile = function(MyGameArea, Buildings, Character, turn) {
   this.turn = turn;
   this.strenght = 10;
   this.angle = 90;
-  this.myGameArea = MyGameArea;
-  this.context = MyGameArea.ctx;
+  this.gameArea = gameArea;
+  this.context = gameArea.ctx;
   this.damage = Character.damage;
   this.positionx = Character.positionx;
   this.positiony = Character.positiony;
@@ -75,11 +75,11 @@ Proyectile.prototype.collisionBuild = function() {
       that.positiony < maxyBuild &&
       that.positiony > minyBuild
     ) {
-      that.myGameArea.lastPositionX=that.positionx 
-      that.myGameArea.lastPositionY=that.positiony 
+      that.gameArea.lastPositionX=that.positionx 
+      that.gameArea.lastPositionY=that.positiony 
       that.buildings.damage(build, i);
       that.impactBuild = true;
-      that.myGameArea.startExplosion= true;
+      that.gameArea.startExplosion= true;
       that.audioExplosion1.play()
     }
   }
@@ -87,7 +87,7 @@ Proyectile.prototype.collisionBuild = function() {
 
 //esta variable comprueba la posicion de los jugadores, con la del proyectil y cambia la variable impactPlayer si se produce el impacto
 Proyectile.prototype.collisionPlayer = function() {
-  var play = this.myGameArea.playersArray;
+  var play = this.gameArea.playersArray;
   var maxxPlayer1 = play[0].currentBuilding.positionx + 50;
   var minxPlayer1 = play[0].currentBuilding.positionx + 20;
   var maxyPlayer1 = play[0].currentBuilding.positiony;
@@ -103,10 +103,10 @@ Proyectile.prototype.collisionPlayer = function() {
     this.positiony < maxyPlayer1 &&
     this.positiony > minyPlayer1
   ) {
-    this.myGameArea.lastPositionX=this.positionx 
-    this.myGameArea.lastPositionY=this.positiony 
+    this.gameArea.lastPositionX=this.positionx 
+    this.gameArea.lastPositionY=this.positiony 
     this.impactPlayer1 = true;
-    this.myGameArea.startExplosion= true;
+    this.gameArea.startExplosion= true;
     this.audioExplosion1.play()
   } else if (
     this.positionx > minxPlayer2 &&
@@ -114,16 +114,16 @@ Proyectile.prototype.collisionPlayer = function() {
     this.positiony < maxyPlayer2 &&
     this.positiony > minyPlayer2
   ) {
-    this.myGameArea.lastPositionX=this.positionx 
-    this.myGameArea.lastPositionY=this.positiony 
+    this.gameArea.lastPositionX=this.positionx 
+    this.gameArea.lastPositionY=this.positiony 
     this.impactPlayer2 = true;
-    this.myGameArea.startExplosion= true;
+    this.gameArea.startExplosion= true;
     this.audioExplosion1.play()
   }
 };
 Proyectile.prototype.explosion = function() {
   
-  this.context.drawImage(this.imgExplode, this.frame, 0, 96, 96, this.myGameArea.lastPositionX-30, this.myGameArea.lastPositionY-30, 60, 60);
+  this.context.drawImage(this.imgExplode, this.frame, 0, 96, 96, this.gameArea.lastPositionX-30, this.gameArea.lastPositionY-30, 60, 60);
   if (this.frameCount%5===0){
 this.frame +=96
 this.frameCount++
@@ -131,7 +131,7 @@ this.frameCount++
 else if(this.frameCount>60){
   this.frameCount=0
   this.frame=0
-  this.myGameArea.startExplosion =false
+  this.gameArea.startExplosion =false
 
 }else{
   this.frameCount++
@@ -143,7 +143,7 @@ else if(this.frameCount>60){
 };
 Proyectile.prototype.bigExplosion = function() {
   
-  this.context.drawImage(this.imgExplode, this.frame, 0, 96, 96, this.myGameArea.lastPositionX-150, this.myGameArea.lastPositionY-250, 300, 500);
+  this.context.drawImage(this.imgExplode, this.frame, 0, 96, 96, this.gameArea.lastPositionX-150, this.gameArea.lastPositionY-250, 300, 500);
   if (this.frameCount%5===0){
 this.frame +=96
 this.frameCount++
@@ -151,7 +151,7 @@ this.frameCount++
 else if(this.frameCount>60){
   this.frameCount=0
   this.frame=0
-  this.myGameArea.startBigExplosion =false
+  this.gameArea.startBigExplosion =false
 
 }else{
   this.frameCount++

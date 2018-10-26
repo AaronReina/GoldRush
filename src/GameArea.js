@@ -1,15 +1,15 @@
-var MyGameArea = function(player1, player2) {
+var MyGameArea = function(SelectDom) {
   //instancia los objetos necesarios
-  this.fps = 0;
+  this.selectDom = SelectDom
   this.canvas = document.querySelector("#Canvas");
   this.ctx = this.canvas.getContext("2d");
-  this.player1Img = player1;
-  this.player2Img = player2;
+  this.player1Img = this.selectDom.player1;
+  this.player2Img = this.selectDom.player2;
   this.turn = new Turn(this);
   this.weather = new Weather(this);
   this.building = new Building(this);
-  this.player1 = new Character(this, this.building, 1, 2, 1, this.player1Img);
-  this.player2 = new Character(this, this.building, 1, 2, 2, this.player2Img);
+  this.player1 = new Character(this, this.building,this.selectDom, 1, this.player1Img);
+  this.player2 = new Character(this, this.building,this.selectDom, 2, this.player2Img);
   this.playersArray = [this.player1, this.player2];
   this.proyectile1 = new Proyectile(this, this.building, this.player1, 1);
   this.proyectile2 = new Proyectile(this, this.building, this.player2, 2);
@@ -39,8 +39,6 @@ var MyGameArea = function(player1, player2) {
     this.proyectile1.positiony = this.player1.currentBuilding.positiony - 40;
     this.proyectile2.positionx = this.player2.currentBuilding.positionx + 20;
     this.proyectile2.positiony = this.player2.currentBuilding.positiony - 40;
-    // console.log(this.proyectile1.positiony)
-    // console.log(this.player1.positiony)
   };
   //Dibuja el area , los edificios y los personajes, despues de limpiar el canvas
   MyGameArea.prototype.drawArea = function() {
