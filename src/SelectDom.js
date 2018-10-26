@@ -8,7 +8,10 @@ var SelectDom = function() {
   this.audioGame.volume=0.1;
   this.inicio = document.getElementsByTagName("button");
   this.choose = document.getElementsByTagName("h2");
-  this.gameShow = document.getElementsByTagName("body");
+  this.case1 = document.getElementById("Case1");
+  this.case2 = document.getElementById("Case2");
+  this.case3 = document.getElementById("Case3");
+  this.winner = document.getElementById("winner");
   this.choose2 = "SELECT PLAYER TWO";
   this.play = "PRESS START";
   this.player = 1;
@@ -74,13 +77,8 @@ var SelectDom = function() {
         }
   }
   SelectDom.prototype.selection5 = function() {
-    var gameHtml =
-    '<div class="back1"><div id="total"> <div id="player1"><div><input type="number" class="strenghtPlayer1" placeholder="Strenght 0 to 700"></div><div><input type="number" class="anglePlayer1" placeholder="Angle 0 to 90"></div><button type="button" class="AttackPlayer1 buttonFinal"> Attack!!! </button></div><div id="BackCanvas"><canvas id="Canvas" width="1000" height="800"></canvas></div><div id="player2" class="buttonsOf"><div><input type="number" class="strenghtPlayer2" placeholder="Strenght 0 to 700"></div><div><input type="number" class="anglePlayer2" placeholder="Angle 0 to 90"></div><button type="button" class="AttackPlayer2 buttonFinal"> Attack!!! </button></div></div></div>';
-    this.audioGame.play()
-  this.startGame = true;
-  this.gameShow[0].innerHTML = "";
-  this.gameShow[0].innerHTML = gameHtml;}
-
-
-  
+    this.case1.classList.add("caseOf");
+    this.case2.classList.remove("caseOf");
+  this.audioGame.play()
+  }
 }

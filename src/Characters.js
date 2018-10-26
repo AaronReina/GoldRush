@@ -43,8 +43,11 @@ Character.prototype.die = function() {
   //indica con una alerta que jugador gana (en el futuro realizara otras acciones)
   if(this.player ===1){ this.winner= this.selectDom.player2}
   else {this.winner= this.selectDom.player1}
-  var finalString =
-      '<div class="back3"><p class = "Winnnnner">YOU ARE THE WINNER!!!</p><div class ="playerButons"> <div class = "'+this.winner+' players"></div></div></div>'
-      this.selectDom.gameShow[0].innerHTML = "";
-      this.selectDom.gameShow[0].innerHTML = finalString;
+  this.selectDom.case2.classList.add("caseOf");
+  this.selectDom.winner.classList.add(this.winner);
+    this.selectDom.case3.classList.remove("caseOf");
+    
+    
+    
+
 };

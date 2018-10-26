@@ -19,7 +19,7 @@ var Turn = function(gameArea) {
 
         that.player1Node.classList.remove("buttonsOf");
 
-        that.buttons[0].onclick = function() {
+        that.buttons[5].onclick = function() {
           if (that.inputs[0].value != "" &&
           that.inputs[1].value != "" &&
           that.inputs[0].value > -1 &&
@@ -45,7 +45,7 @@ var Turn = function(gameArea) {
         that.draw2 = false;
         that.player2Node.classList.remove("buttonsOf");
 
-        that.buttons[1].onclick = function() {
+        that.buttons[6].onclick = function() {
           if (
             that.inputs[2].value != "" &&
             that.inputs[3].value != "" &&
