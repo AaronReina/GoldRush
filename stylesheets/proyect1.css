@@ -146,7 +146,9 @@ html {
 }
 .Winnnnner {
   font-size: 100px;
-  color: rgb(215, 183, 64);
+  border-style: none;
+  -webkit-text-fill-color: silver;
+-webkit-text-stroke: 2px black;
 }
 .case {
   position: absolute;
